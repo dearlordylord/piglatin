@@ -253,5 +253,12 @@ sampled checks does not establish that the specification or implementation is co
 
 The current public implementations are `translate.ts` and `translate-composed.ts`.
 There are four historical model generations. The fourth model is the authoritative
-public specification and default check; models 1–3 are retained as experiments. The CRAP gate remains above its configured
-threshold of 8; it is not being used to select the authoritative specification.
+public specification and default check; models 1–3 are retained as experiments.
+
+After repository initialization, we reduced the remaining CRAP hotspots through
+behavior-preserving helper extraction: consonant-cluster scanning in original,
+word versus boundary decisions in composed, and token versus spelling checks in
+the shared parser. The existing gate went red → green without raising its threshold
+of 8. Maximum function scores changed from 9 → 6 (original), 10 → 7 (composed),
+and 11 → 5 (shared domain). This reduces complexity per function; it does not
+claim fewer overall decisions or establish specification fidelity.

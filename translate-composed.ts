@@ -68,22 +68,25 @@ const fallback: Decider = (state, event): Decision => {
       return { kind: "finish", state, separator: "" };
     case "character": {
       const character = WordCharacter.make(event.value);
-      switch (state.kind) {
-        case "leading":
-        case "trailingPunctuation":
-          return isVowel(character)
-            ? { kind: "startWord", state, destination: "stem", character }
-            : { kind: "startWord", state, destination: "prefix", character: Consonant.make(character) };
-        case "prefix":
-          return isConsonant(character)
-            ? { kind: "appendPrefix", state, character }
-            : { kind: "startStem", state, character: Vowel.make(character) };
-        case "stem":
-          return { kind: "appendStem", state, character };
-      }
+      return decideWordCharacter(state, character);
     }
   }
 };
+function decideWordCharacter(state: State, character: WordCharacter): Decision {
+  switch (state.kind) {
+    case "leading":
+    case "trailingPunctuation":
+      return isVowel(character)
+        ? { kind: "startWord", state, destination: "stem", character }
+        : { kind: "startWord", state, destination: "prefix", character: Consonant.make(character) };
+    case "prefix":
+      return isConsonant(character)
+        ? { kind: "appendPrefix", state, character }
+        : { kind: "startStem", state, character: Vowel.make(character) };
+    case "stem":
+      return { kind: "appendStem", state, character };
+  }
+}
 const decide = firstMatch(fallback, whitespace, leadingQuote, trailingPunctuation, quContinuation);
 
 function composeObservers(...observers: Observer<ObservedClassification>[]): Observer<ObservedClassification> {
@@ -146,6 +149,14 @@ function applyDecision(decision: Decision): State {
       return { ...decision.state, output: decision.state.output + decision.character };
     case "trailingPunctuation":
       return { kind: "trailingPunctuation", output: decision.state.output + finishWord(decision.state) + decision.character };
+    default:
+      return applyWordDecision(decision);
+  }
+}
+
+type WordDecision = Exclude<Decision, { kind: "finish" | "leadingQuote" | "trailingPunctuation" }>;
+function applyWordDecision(decision: WordDecision): ReadingState {
+  switch (decision.kind) {
     case "startWord": {
       const classification = classifyFirst(decision.character);
       if (decision.destination === "prefix") {

@@ -72,14 +72,21 @@ function unsupportedInput(text: string): string | undefined {
   const unsupported = text.match(/[^A-Za-z0-9 \t\n,!?"]/);
   if (unsupported) return `Unsupported character ${JSON.stringify(unsupported[0])} at index ${unsupported.index}`;
   for (const token of text.split(/[ \t\n,!?"]+/).filter(Boolean)) {
-    if (/^\d+$/.test(token)) continue;
-    if (/[a-z]/i.test(token) && /\d/.test(token)) return `Mixed letters and digits are unsupported: ${token}`;
-    if (!/^(?:[a-z]+|[A-Z][a-z]+|[A-Z]{2,})$/.test(token)) return `Unsupported case style: ${token}`;
-    const word = token.toLowerCase();
-    if (word.includes("y")) return `Unsupported y spelling: ${token}`;
-    if (word.includes("q") && word !== "q" && !/^[^aeiouqy]*qu[aeiou][^qy]*$/.test(word)) {
-      return `Unsupported q spelling: ${token}`;
-    }
+    const problem = unsupportedToken(token);
+    if (problem !== undefined) return problem;
+  }
+}
+function unsupportedToken(token: string): string | undefined {
+  if (/^\d+$/.test(token)) return;
+  if (/[a-z]/i.test(token) && /\d/.test(token)) return `Mixed letters and digits are unsupported: ${token}`;
+  if (!/^(?:[a-z]+|[A-Z][a-z]+|[A-Z]{2,})$/.test(token)) return `Unsupported case style: ${token}`;
+  return unsupportedSpelling(token);
+}
+function unsupportedSpelling(token: string): string | undefined {
+  const word = token.toLowerCase();
+  if (word.includes("y")) return `Unsupported y spelling: ${token}`;
+  if (word.includes("q") && word !== "q" && !/^[^aeiouqy]*qu[aeiou][^qy]*$/.test(word)) {
+    return `Unsupported q spelling: ${token}`;
   }
 }
 export const TranslationInput = Schema.String.check(Schema.makeFilter(unsupportedInput)).pipe(Schema.brand("TranslationInput"));

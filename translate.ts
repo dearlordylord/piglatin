@@ -15,17 +15,22 @@ function translateSource(text: string): string {
     const first = word[0];
     if ("aeiou".includes(first.toLowerCase())) return word + "ay";
 
-    let clusterEnd = 1;
-    while (clusterEnd < word.length && (
-      !"aeiou".includes(word[clusterEnd].toLowerCase()) ||
-      word.slice(clusterEnd - 1, clusterEnd + 1).toLowerCase() === "qu"
-    )) {
-      clusterEnd++;
-    }
+    const clusterEnd = consonantClusterEnd(word);
     const translated = word.slice(clusterEnd) + word.slice(0, clusterEnd).toLowerCase() + "ay";
     if (first === first.toUpperCase()) {
       return translated[0].toUpperCase() + translated.slice(1);
     }
     return translated;
   });
+}
+
+function consonantClusterEnd(word: TokenFragment): number {
+  let clusterEnd = 1;
+  while (clusterEnd < word.length && (
+    !"aeiou".includes(word[clusterEnd].toLowerCase()) ||
+    word.slice(clusterEnd - 1, clusterEnd + 1).toLowerCase() === "qu"
+  )) {
+    clusterEnd++;
+  }
+  return clusterEnd;
 }

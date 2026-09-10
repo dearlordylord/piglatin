@@ -3,123 +3,45 @@
   "threshold": 8,
   "rows": [
     {
-      "id": "domain.ts::unsupportedInput@3194-4011",
-      "path": "domain.ts",
-      "name": "unsupportedInput",
+      "id": "translate-composed.ts::decideWordCharacter@3177-3797",
+      "path": "translate-composed.ts",
+      "name": "decideWordCharacter",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 3194,
-          "line": 71,
+          "offset": 3177,
+          "line": 75,
           "column": 0
         },
         "end": {
-          "offset": 4011,
-          "line": 84,
+          "offset": 3797,
+          "line": 89,
           "column": 1
         }
       },
-      "complexity": 11,
+      "complexity": 7,
       "coverage": {
         "status": "measured",
-        "covered": 15,
-        "total": 15,
+        "covered": 4,
+        "total": 4,
         "fraction": 1.0
       },
-      "crap": 11.0
+      "crap": 7.0
     },
     {
-      "id": "translate-composed.ts::applyDecision@6450-7662",
-      "path": "translate-composed.ts",
-      "name": "applyDecision",
-      "kind": "function_declaration",
-      "range": {
-        "start": {
-          "offset": 6450,
-          "line": 141,
-          "column": 0
-        },
-        "end": {
-          "offset": 7662,
-          "line": 165,
-          "column": 1
-        }
-      },
-      "complexity": 10,
-      "coverage": {
-        "status": "measured",
-        "covered": 12,
-        "total": 12,
-        "fraction": 1.0
-      },
-      "crap": 10.0
-    },
-    {
-      "id": "translate-composed.ts::fallback@2906-3713",
-      "path": "translate-composed.ts",
-      "name": "fallback",
-      "kind": "arrow",
-      "range": {
-        "start": {
-          "offset": 2906,
-          "line": 65,
-          "column": 26
-        },
-        "end": {
-          "offset": 3713,
-          "line": 86,
-          "column": 1
-        }
-      },
-      "complexity": 9,
-      "coverage": {
-        "status": "measured",
-        "covered": 7,
-        "total": 7,
-        "fraction": 1.0
-      },
-      "crap": 9.0
-    },
-    {
-      "id": "translate.ts::<anonymous>@9:37@341-1141",
-      "path": "translate.ts",
-      "name": "<anonymous>@9:37",
-      "kind": "arrow",
-      "range": {
-        "start": {
-          "offset": 341,
-          "line": 9,
-          "column": 37
-        },
-        "end": {
-          "offset": 1141,
-          "line": 30,
-          "column": 3
-        }
-      },
-      "complexity": 9,
-      "coverage": {
-        "status": "measured",
-        "covered": 15,
-        "total": 15,
-        "fraction": 1.0
-      },
-      "crap": 9.0
-    },
-    {
-      "id": "translate-composed.ts::finishWord@5941-6448",
+      "id": "translate-composed.ts::finishWord@6024-6531",
       "path": "translate-composed.ts",
       "name": "finishWord",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 5941,
-          "line": 131,
+          "offset": 6024,
+          "line": 134,
           "column": 0
         },
         "end": {
-          "offset": 6448,
-          "line": 139,
+          "offset": 6531,
+          "line": 142,
           "column": 1
         }
       },
@@ -131,6 +53,110 @@
         "fraction": 1.0
       },
       "crap": 7.0
+    },
+    {
+      "id": "translate-composed.ts::applyWordDecision@7165-8001",
+      "path": "translate-composed.ts",
+      "name": "applyWordDecision",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 7165,
+          "line": 158,
+          "column": 0
+        },
+        "end": {
+          "offset": 8001,
+          "line": 176,
+          "column": 1
+        }
+      },
+      "complexity": 7,
+      "coverage": {
+        "status": "measured",
+        "covered": 9,
+        "total": 9,
+        "fraction": 1.0
+      },
+      "crap": 7.0
+    },
+    {
+      "id": "translate.ts::<anonymous>@9:37@341-960",
+      "path": "translate.ts",
+      "name": "<anonymous>@9:37",
+      "kind": "arrow",
+      "range": {
+        "start": {
+          "offset": 341,
+          "line": 9,
+          "column": 37
+        },
+        "end": {
+          "offset": 960,
+          "line": 24,
+          "column": 3
+        }
+      },
+      "complexity": 6,
+      "coverage": {
+        "status": "measured",
+        "covered": 13,
+        "total": 13,
+        "fraction": 1.0
+      },
+      "crap": 6.0
+    },
+    {
+      "id": "domain.ts::unsupportedToken@3596-3941",
+      "path": "domain.ts",
+      "name": "unsupportedToken",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 3596,
+          "line": 79,
+          "column": 0
+        },
+        "end": {
+          "offset": 3941,
+          "line": 84,
+          "column": 1
+        }
+      },
+      "complexity": 5,
+      "coverage": {
+        "status": "measured",
+        "covered": 7,
+        "total": 7,
+        "fraction": 1.0
+      },
+      "crap": 5.0
+    },
+    {
+      "id": "domain.ts::unsupportedSpelling@3942-4255",
+      "path": "domain.ts",
+      "name": "unsupportedSpelling",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 3942,
+          "line": 85,
+          "column": 0
+        },
+        "end": {
+          "offset": 4255,
+          "line": 91,
+          "column": 1
+        }
+      },
+      "complexity": 5,
+      "coverage": {
+        "status": "measured",
+        "covered": 5,
+        "total": 5,
+        "fraction": 1.0
+      },
+      "crap": 5.0
     },
     {
       "id": "translate-composed.ts::quContinuation@2549-2807",
@@ -159,6 +185,32 @@
       "crap": 5.0
     },
     {
+      "id": "domain.ts::unsupportedInput@3194-3595",
+      "path": "domain.ts",
+      "name": "unsupportedInput",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 3194,
+          "line": 71,
+          "column": 0
+        },
+        "end": {
+          "offset": 3595,
+          "line": 78,
+          "column": 1
+        }
+      },
+      "complexity": 4,
+      "coverage": {
+        "status": "measured",
+        "covered": 7,
+        "total": 7,
+        "fraction": 1.0
+      },
+      "crap": 4.0
+    },
+    {
       "id": "translate-composed.ts::leadingQuote@2134-2314",
       "path": "translate-composed.ts",
       "name": "leadingQuote",
@@ -180,6 +232,58 @@
         "status": "measured",
         "covered": 2,
         "total": 2,
+        "fraction": 1.0
+      },
+      "crap": 4.0
+    },
+    {
+      "id": "translate-composed.ts::applyDecision@6533-7063",
+      "path": "translate-composed.ts",
+      "name": "applyDecision",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 6533,
+          "line": 144,
+          "column": 0
+        },
+        "end": {
+          "offset": 7063,
+          "line": 155,
+          "column": 1
+        }
+      },
+      "complexity": 4,
+      "coverage": {
+        "status": "measured",
+        "covered": 5,
+        "total": 5,
+        "fraction": 1.0
+      },
+      "crap": 4.0
+    },
+    {
+      "id": "translate.ts::consonantClusterEnd@966-1265",
+      "path": "translate.ts",
+      "name": "consonantClusterEnd",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 966,
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "offset": 1265,
+          "line": 36,
+          "column": 1
+        }
+      },
+      "complexity": 4,
+      "coverage": {
+        "status": "measured",
+        "covered": 4,
+        "total": 4,
         "fraction": 1.0
       },
       "crap": 4.0
@@ -263,19 +367,45 @@
       "crap": 3.0
     },
     {
-      "id": "translate-composed.ts::trackUppercase@4377-4461",
+      "id": "translate-composed.ts::fallback@2906-3175",
+      "path": "translate-composed.ts",
+      "name": "fallback",
+      "kind": "arrow",
+      "range": {
+        "start": {
+          "offset": 2906,
+          "line": 65,
+          "column": 26
+        },
+        "end": {
+          "offset": 3175,
+          "line": 74,
+          "column": 1
+        }
+      },
+      "complexity": 3,
+      "coverage": {
+        "status": "measured",
+        "covered": 4,
+        "total": 4,
+        "fraction": 1.0
+      },
+      "crap": 3.0
+    },
+    {
+      "id": "translate-composed.ts::trackUppercase@4460-4544",
       "path": "translate-composed.ts",
       "name": "trackUppercase",
       "kind": "arrow",
       "range": {
         "start": {
-          "offset": 4377,
-          "line": 98,
+          "offset": 4460,
+          "line": 101,
           "column": 42
         },
         "end": {
-          "offset": 4461,
-          "line": 99,
+          "offset": 4544,
+          "line": 102,
           "column": 55
         }
       },
@@ -289,19 +419,19 @@
       "crap": 2.0
     },
     {
-      "id": "translate-composed.ts::trackDigits@4502-4563",
+      "id": "translate-composed.ts::trackDigits@4585-4646",
       "path": "translate-composed.ts",
       "name": "trackDigits",
       "kind": "arrow",
       "range": {
         "start": {
-          "offset": 4502,
-          "line": 100,
+          "offset": 4585,
+          "line": 103,
           "column": 39
         },
         "end": {
-          "offset": 4563,
-          "line": 100,
+          "offset": 4646,
+          "line": 103,
           "column": 100
         }
       },
@@ -315,19 +445,19 @@
       "crap": 2.0
     },
     {
-      "id": "translate-composed.ts::translate@7780-8023",
+      "id": "translate-composed.ts::translate@8119-8362",
       "path": "translate-composed.ts",
       "name": "translate",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 7780,
-          "line": 171,
+          "offset": 8119,
+          "line": 182,
           "column": 7
         },
         "end": {
-          "offset": 8023,
-          "line": 175,
+          "offset": 8362,
+          "line": 186,
           "column": 1
         }
       },
@@ -341,19 +471,19 @@
       "crap": 2.0
     },
     {
-      "id": "domain.ts::withParsedInput@4293-4451",
+      "id": "domain.ts::withParsedInput@4537-4695",
       "path": "domain.ts",
       "name": "withParsedInput",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 4293,
-          "line": 89,
+          "offset": 4537,
+          "line": 96,
           "column": 7
         },
         "end": {
-          "offset": 4451,
-          "line": 91,
+          "offset": 4695,
+          "line": 98,
           "column": 1
         }
       },
@@ -367,19 +497,19 @@
       "crap": 1.0
     },
     {
-      "id": "domain.ts::<anonymous>@90:9@4377-4448",
+      "id": "domain.ts::<anonymous>@97:9@4621-4692",
       "path": "domain.ts",
-      "name": "<anonymous>@90:9",
+      "name": "<anonymous>@97:9",
       "kind": "arrow",
       "range": {
         "start": {
-          "offset": 4377,
-          "line": 90,
+          "offset": 4621,
+          "line": 97,
           "column": 9
         },
         "end": {
-          "offset": 4448,
-          "line": 90,
+          "offset": 4692,
+          "line": 97,
           "column": 80
         }
       },
@@ -445,19 +575,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::composeObservers@3816-4054",
+      "id": "translate-composed.ts::composeObservers@3899-4137",
       "path": "translate-composed.ts",
       "name": "composeObservers",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 3816,
-          "line": 89,
+          "offset": 3899,
+          "line": 92,
           "column": 0
         },
         "end": {
-          "offset": 4054,
-          "line": 91,
+          "offset": 4137,
+          "line": 94,
           "column": 1
         }
       },
@@ -471,19 +601,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::<anonymous>@90:9@3937-4051",
+      "id": "translate-composed.ts::<anonymous>@93:9@4020-4134",
       "path": "translate-composed.ts",
-      "name": "<anonymous>@90:9",
+      "name": "<anonymous>@93:9",
       "kind": "arrow",
       "range": {
         "start": {
-          "offset": 3937,
-          "line": 90,
+          "offset": 4020,
+          "line": 93,
           "column": 9
         },
         "end": {
-          "offset": 4051,
-          "line": 90,
+          "offset": 4134,
+          "line": 93,
           "column": 123
         }
       },
@@ -497,19 +627,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::<anonymous>@90:57@3985-4034",
+      "id": "translate-composed.ts::<anonymous>@93:57@4068-4117",
       "path": "translate-composed.ts",
-      "name": "<anonymous>@90:57",
+      "name": "<anonymous>@93:57",
       "kind": "arrow",
       "range": {
         "start": {
-          "offset": 3985,
-          "line": 90,
+          "offset": 4068,
+          "line": 93,
           "column": 57
         },
         "end": {
-          "offset": 4034,
-          "line": 90,
+          "offset": 4117,
+          "line": 93,
           "column": 106
         }
       },
@@ -523,19 +653,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::observeField@4055-4334",
+      "id": "translate-composed.ts::observeField@4138-4417",
       "path": "translate-composed.ts",
       "name": "observeField",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 4055,
-          "line": 92,
+          "offset": 4138,
+          "line": 95,
           "column": 0
         },
         "end": {
-          "offset": 4334,
-          "line": 97,
+          "offset": 4417,
+          "line": 100,
           "column": 1
         }
       },
@@ -549,19 +679,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::<anonymous>@96:9@4229-4331",
+      "id": "translate-composed.ts::<anonymous>@99:9@4312-4414",
       "path": "translate-composed.ts",
-      "name": "<anonymous>@96:9",
+      "name": "<anonymous>@99:9",
       "kind": "arrow",
       "range": {
         "start": {
-          "offset": 4229,
-          "line": 96,
+          "offset": 4312,
+          "line": 99,
           "column": 9
         },
         "end": {
-          "offset": 4331,
-          "line": 96,
+          "offset": 4414,
+          "line": 99,
           "column": 111
         }
       },
@@ -575,44 +705,18 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::classifyFirst@4702-4939",
+      "id": "translate-composed.ts::classifyFirst@4785-5022",
       "path": "translate-composed.ts",
       "name": "classifyFirst",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 4702,
-          "line": 105,
+          "offset": 4785,
+          "line": 108,
           "column": 0
         },
         "end": {
-          "offset": 4939,
-          "line": 111,
-          "column": 1
-        }
-      },
-      "complexity": 1,
-      "coverage": {
-        "status": "measured",
-        "covered": 1,
-        "total": 1,
-        "fraction": 1.0
-      },
-      "crap": 1.0
-    },
-    {
-      "id": "translate-composed.ts::classifyNext@4940-5120",
-      "path": "translate-composed.ts",
-      "name": "classifyNext",
-      "kind": "function_declaration",
-      "range": {
-        "start": {
-          "offset": 4940,
-          "line": 112,
-          "column": 0
-        },
-        "end": {
-          "offset": 5120,
+          "offset": 5022,
           "line": 114,
           "column": 1
         }
@@ -627,19 +731,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::appendPrefix@5122-5320",
+      "id": "translate-composed.ts::classifyNext@5023-5203",
       "path": "translate-composed.ts",
-      "name": "appendPrefix",
+      "name": "classifyNext",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 5122,
-          "line": 116,
+          "offset": 5023,
+          "line": 115,
           "column": 0
         },
         "end": {
-          "offset": 5320,
-          "line": 118,
+          "offset": 5203,
+          "line": 117,
           "column": 1
         }
       },
@@ -653,18 +757,18 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::completeQu@5321-5519",
+      "id": "translate-composed.ts::appendPrefix@5205-5403",
       "path": "translate-composed.ts",
-      "name": "completeQu",
+      "name": "appendPrefix",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 5321,
+          "offset": 5205,
           "line": 119,
           "column": 0
         },
         "end": {
-          "offset": 5519,
+          "offset": 5403,
           "line": 121,
           "column": 1
         }
@@ -679,19 +783,19 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::startStem@5520-5749",
+      "id": "translate-composed.ts::completeQu@5404-5602",
       "path": "translate-composed.ts",
-      "name": "startStem",
+      "name": "completeQu",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 5520,
+          "offset": 5404,
           "line": 122,
           "column": 0
         },
         "end": {
-          "offset": 5749,
-          "line": 127,
+          "offset": 5602,
+          "line": 124,
           "column": 1
         }
       },
@@ -705,18 +809,18 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::appendStem@5750-5940",
+      "id": "translate-composed.ts::startStem@5603-5832",
       "path": "translate-composed.ts",
-      "name": "appendStem",
+      "name": "startStem",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 5750,
-          "line": 128,
+          "offset": 5603,
+          "line": 125,
           "column": 0
         },
         "end": {
-          "offset": 5940,
+          "offset": 5832,
           "line": 130,
           "column": 1
         }
@@ -731,19 +835,45 @@
       "crap": 1.0
     },
     {
-      "id": "translate-composed.ts::reduce@7671-7771",
+      "id": "translate-composed.ts::appendStem@5833-6023",
+      "path": "translate-composed.ts",
+      "name": "appendStem",
+      "kind": "function_declaration",
+      "range": {
+        "start": {
+          "offset": 5833,
+          "line": 131,
+          "column": 0
+        },
+        "end": {
+          "offset": 6023,
+          "line": 133,
+          "column": 1
+        }
+      },
+      "complexity": 1,
+      "coverage": {
+        "status": "measured",
+        "covered": 1,
+        "total": 1,
+        "fraction": 1.0
+      },
+      "crap": 1.0
+    },
+    {
+      "id": "translate-composed.ts::reduce@8010-8110",
       "path": "translate-composed.ts",
       "name": "reduce",
       "kind": "function_declaration",
       "range": {
         "start": {
-          "offset": 7671,
-          "line": 167,
+          "offset": 8010,
+          "line": 178,
           "column": 7
         },
         "end": {
-          "offset": 7771,
-          "line": 169,
+          "offset": 8110,
+          "line": 180,
           "column": 1
         }
       },
@@ -783,7 +913,7 @@
       "crap": 1.0
     },
     {
-      "id": "translate.ts::translateSource@255-1145",
+      "id": "translate.ts::translateSource@255-964",
       "path": "translate.ts",
       "name": "translateSource",
       "kind": "function_declaration",
@@ -794,8 +924,8 @@
           "column": 0
         },
         "end": {
-          "offset": 1145,
-          "line": 31,
+          "offset": 964,
+          "line": 25,
           "column": 1
         }
       },
@@ -868,35 +998,35 @@
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '29' in 'translate-composed.ts' has no compatible source function"
-    },
-    {
-      "category": "coverage_attribution",
       "message": "unmatched Istanbul statement '3' in 'domain.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '31' in 'domain.ts' has no compatible source function"
+      "message": "unmatched Istanbul statement '30' in 'translate-composed.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '32' in 'domain.ts' has no compatible source function"
+      "message": "unmatched Istanbul statement '35' in 'domain.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '35' in 'translate-composed.ts' has no compatible source function"
+      "message": "unmatched Istanbul statement '36' in 'domain.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '37' in 'translate-composed.ts' has no compatible source function"
+      "message": "unmatched Istanbul statement '36' in 'translate-composed.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '39' in 'translate-composed.ts' has no compatible source function"
+      "message": "unmatched Istanbul statement '38' in 'translate-composed.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
       "message": "unmatched Istanbul statement '4' in 'domain.ts' has no compatible source function"
+    },
+    {
+      "category": "coverage_attribution",
+      "message": "unmatched Istanbul statement '40' in 'translate-composed.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
@@ -916,7 +1046,7 @@
     },
     {
       "category": "coverage_attribution",
-      "message": "unmatched Istanbul statement '74' in 'translate-composed.ts' has no compatible source function"
+      "message": "unmatched Istanbul statement '77' in 'translate-composed.ts' has no compatible source function"
     },
     {
       "category": "coverage_attribution",
@@ -925,10 +1055,6 @@
     {
       "category": "coverage_attribution",
       "message": "unmatched Istanbul statement '9' in 'domain.ts' has no compatible source function"
-    },
-    {
-      "category": "threshold_breach",
-      "message": "one or more CRAP scores exceed the threshold of 8"
     }
   ]
 }
