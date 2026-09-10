@@ -1,0 +1,22 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> spec:simulate
+> npm run spec:simulate:contract
+
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> spec:simulate:contract
+> quint run translate-contract_harness.qnt --backend typescript --max-samples 100 --max-steps 15 --seed 42 --invariant safety --witnesses reachedNonText sawWord sawBoundary sawPhrase sawInvalidToken sawInvalidCharacter sawArbitrary sawAccepted sawRejected --verbosity 1
+
+[ok] No violation found (3605ms at 28 traces/second).
+Witnesses:
+reachedNonText was witnessed in 92 trace(s) out of 100 explored (92.00%)
+sawWord was witnessed in 89 trace(s) out of 100 explored (89.00%)
+sawBoundary was witnessed in 89 trace(s) out of 100 explored (89.00%)
+sawPhrase was witnessed in 90 trace(s) out of 100 explored (90.00%)
+sawInvalidToken was witnessed in 87 trace(s) out of 100 explored (87.00%)
+sawInvalidCharacter was witnessed in 94 trace(s) out of 100 explored (94.00%)
+sawArbitrary was witnessed in 87 trace(s) out of 100 explored (87.00%)
+sawAccepted was witnessed in 100 trace(s) out of 100 explored (100.00%)
+sawRejected was witnessed in 100 trace(s) out of 100 explored (100.00%)
+Use --seed=0x2a --backend=typescript to reproduce.

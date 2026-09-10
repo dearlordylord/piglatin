@@ -1,0 +1,37 @@
+✔ a character is exactly one Unicode code point (2.106321ms)
+✔ token fragments allow empty recursion results but exclude whitespace (0.225295ms)
+✔ digit sequences are nonempty and contain only digits (0.156169ms)
+✔ character event construction validates the character payload (2.634453ms)
+✔ a prefix is nonempty, contains no separators, and admits u only after q (0.394422ms)
+✔ a stem is nonempty, begins with a vowel, and contains no separators (0.154711ms)
+✔ public input parsing rejects mixed letters and digits (0.39163ms)
+✔ public input parsing rejects unsupported characters (0.304004ms)
+✖ public input parsing rejects ambiguous case styles (0.457215ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 257.097106
+
+✖ failing tests:
+
+test at domain.test.ts:65:1
+✖ public input parsing rejects ambiguous case styles (0.457215ms)
+  AssertionError [ERR_ASSERTION]: hELLo
+      at TestContext.<anonymous> (file:///workspace/typescript/piglatin/domain.test.ts:68:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,25 @@
+✖ original batch translate agrees with independent Quint oracle (6458.00163ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7416.472093
+
+✖ failing tests:
+
+test at translate-original.mbt.ts:42:1
+✖ original batch translate agrees with independent Quint oracle (6458.00163ms)
+  {
+    _tag: 'StateMismatchError',
+    message: 'State mismatch at trace 0, step 6, action "Sample" (seed: 42)\n' +
+      'Expected: {"input":"\\"b\\"\\ta\\n","output":"\\"bay\\"\\taay\\n"}\n' +
+      'Actual: {"input":"\\"b\\"\\ta\\n","output":"\\"bay\\"\\taxx\\n"}',
+    traceIndex: 0,
+    stepIndex: 6,
+    expected: { input: '"b"\ta\n', output: '"bay"\taay\n' },
+    actual: { input: '"b"\ta\n', output: '"bay"\taxx\n' },
+    showDiff: true
+  }

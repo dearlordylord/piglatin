@@ -1,0 +1,14 @@
+
+  translate_original_test
+    ok vowelTest passed 1 test(s)
+    ok quTest passed 1 test(s)
+    ok noVowelTest passed 1 test(s)
+    ok uppercaseTest passed 1 test(s)
+    ok mixedCaseTest passed 1 test(s)
+    ok digitsTest passed 1 test(s)
+    ok digitLetterTest passed 1 test(s)
+    ok periodTest passed 1 test(s)
+    ok emptyTest passed 1 test(s)
+    ok separatorsTest passed 1 test(s)
+
+  10 passing (215ms)

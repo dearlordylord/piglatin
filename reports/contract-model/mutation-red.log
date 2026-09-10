@@ -1,0 +1,31 @@
+✖ original: consolidated contract examples (13757.947839ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16485.057123
+
+✖ failing tests:
+
+test at translate-contract.mbt.ts:7:3
+✖ original: consolidated contract examples (13757.947839ms)
+  {
+    _tag: 'StateMismatchError',
+    message: 'State mismatch at trace 0, step 2, action "Text" (seed: 42)\n' +
+      'Expected: {"request":{"tag":"TextInput","value":["97n","112n","112n","108n","101n"]},"permitted":[{"tag":"Translated","value":["97n","112n","112n","108n","101n","97n","121n"]}]}\n' +
+      'Actual: {"request":{"tag":"TextInput","value":["97n","112n","112n","108n","101n"]},"permitted":[{"tag":"Translated","value":["97n","112n","112n","108n","101n","120n","120n"]}]}',
+    traceIndex: 0,
+    stepIndex: 2,
+    expected: {
+      request: { tag: 'TextInput', value: [Array] },
+      permitted: Set(1) { [Object] }
+    },
+    actual: {
+      request: { tag: 'TextInput', value: [Array] },
+      permitted: Set(1) { [Object] }
+    },
+    showDiff: true
+  }

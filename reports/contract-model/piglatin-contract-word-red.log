@@ -1,0 +1,19 @@
+
+  translate_contract_test
+    ok nonTextTest passed 1 test(s)
+    1) helloTest failed after 1 test(s)
+
+  1 passing (71ms)
+  1 failed
+
+  1) helloTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:4:19
+        4:   run helloTest = assert(outcomes(TextInput(List(104, 101, 108, 108, 111))) == Set(Translated(List(101, 108, 108, 111, 104, 97, 121))))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0xbb482270e44fe37d --match=helloTest to repeat.
+
+
+  Use --verbosity=3 to show executions.
+  Further debug with: quint test --verbosity=3 translate-contract_test.qnt
+error: Tests failed

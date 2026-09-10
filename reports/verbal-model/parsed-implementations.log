@@ -1,0 +1,26 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> test:mbt
+> npm run test:mbt:verbal
+
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> test:mbt:verbal
+> node --test translate-verbal.mbt.ts
+
+original, examples: 33 observations, seed 42
+✔ original: verbal specification examples (2574.142308ms)
+original, generated: 5100 observations, seed 42
+✔ original: generated cases from inferred verbal rules (12866.07564ms)
+composed, examples: 33 observations, seed 42
+✔ composed: verbal specification examples (5456.696607ms)
+composed, generated: 5100 observations, seed 42
+✔ composed: generated cases from inferred verbal rules (16694.365953ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38226.032285

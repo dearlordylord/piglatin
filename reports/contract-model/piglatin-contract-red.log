@@ -1,0 +1,17 @@
+
+  translate_contract_test
+    1) nonTextTest failed after 1 test(s)
+
+  1 failed
+
+  1) nonTextTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:3:21
+        3:   run nonTextTest = assert(outcomes(NonText) == Set(Rejected(NotAString)))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0x2329c8e32d5a92a7 --match=nonTextTest to repeat.
+
+
+  Use --verbosity=3 to show executions.
+  Further debug with: quint test --verbosity=3 translate-contract_test.qnt
+error: Tests failed

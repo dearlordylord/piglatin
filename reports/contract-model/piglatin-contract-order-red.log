@@ -1,0 +1,25 @@
+
+  translate_contract_test
+    ok nonTextTest passed 1 test(s)
+    ok helloTest passed 1 test(s)
+    ok mixedTokenRejectedTest passed 1 test(s)
+    ok punctuationRejectedTest passed 1 test(s)
+    ok caseRejectedTest passed 1 test(s)
+    ok yRejectedTest passed 1 test(s)
+    ok qRejectedTest passed 1 test(s)
+    1) unrotatedWordRejectedTest failed after 1 test(s)
+
+  7 passing (130ms)
+  1 failed
+
+  1) unrotatedWordRejectedTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:10:35
+        10:   run unrotatedWordRejectedTest = assert(not(wordConforms(List(104, 101, 108, 108, 111), List(104, 101, 108, 108, 111, 97, 121))))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0x2377e35f6254aa83 --match=unrotatedWordRejectedTest to repeat.
+
+
+  Use --verbosity=3 to show executions.
+  Further debug with: quint test --verbosity=3 translate-contract_test.qnt
+error: Tests failed

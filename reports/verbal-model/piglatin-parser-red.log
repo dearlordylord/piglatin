@@ -1,0 +1,38 @@
+✔ a character is exactly one Unicode code point (7.554522ms)
+✔ token fragments allow empty recursion results but exclude whitespace (0.924888ms)
+✔ digit sequences are nonempty and contain only digits (4.796275ms)
+✔ character event construction validates the character payload (17.711457ms)
+✔ a prefix is nonempty, contains no separators, and admits u only after q (1.167433ms)
+✔ a stem is nonempty, begins with a vowel, and contains no separators (1.198058ms)
+✖ public input parsing rejects mixed letters and digits (28.245188ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1399.473917
+
+✖ failing tests:
+
+test at domain.test.ts:51:1
+✖ public input parsing rejects mixed letters and digits (28.245188ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Result.isFailure(result))
+  
+      at TestContext.<anonymous> (file:///workspace/typescript/piglatin/domain.test.ts:53:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

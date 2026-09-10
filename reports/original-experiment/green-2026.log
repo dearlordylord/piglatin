@@ -1,0 +1,10 @@
+Replayed 100 traces, 5100 observations, seed 2026
+✔ original batch translate agrees with independent Quint oracle (2384.119265ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2641.150161

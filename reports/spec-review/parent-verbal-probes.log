@@ -1,0 +1,9 @@
+
+  parent_verbal_audit
+    ok squareExcludedTest passed 1 test(s)
+    ok squareHelperKnowsOutputTest passed 1 test(s)
+    ok unsupportedExamplesDisabledTest passed 1 test(s)
+    ok separatorsOnlySupportedTest passed 1 test(s)
+    ok preservationDoesNotConstrainRotationTest passed 1 test(s)
+
+  5 passing (13ms)

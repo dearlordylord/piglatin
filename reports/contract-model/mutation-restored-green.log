@@ -1,0 +1,10 @@
+original, examples: 68 comparisons (40 accepted, 28 rejected), seed 42
+✔ original: consolidated contract examples (15132.065855ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16655.128707

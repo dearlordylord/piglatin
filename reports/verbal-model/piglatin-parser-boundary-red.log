@@ -1,0 +1,36 @@
+✔ a character is exactly one Unicode code point (1.424937ms)
+✔ token fragments allow empty recursion results but exclude whitespace (0.23042ms)
+✔ digit sequences are nonempty and contain only digits (0.19242ms)
+✔ character event construction validates the character payload (2.013987ms)
+✔ a prefix is nonempty, contains no separators, and admits u only after q (0.953013ms)
+✔ a stem is nonempty, begins with a vowel, and contains no separators (0.169669ms)
+✔ public input parsing rejects mixed letters and digits (0.516633ms)
+✔ public input parsing rejects unsupported characters (0.334255ms)
+✔ public input parsing rejects ambiguous case styles (0.51084ms)
+✔ public input parsing rejects undefined y and unusual q forms (0.311379ms)
+✖ the parsing boundary returns errors without calling translation (0.25317ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 663.973395
+
+✖ failing tests:
+
+test at domain.test.ts:81:1
+✖ the parsing boundary returns errors without calling translation (0.25317ms)
+  Error: Schema validation failed
+      at Schema.make (file:///workspace/typescript/piglatin/node_modules/effect/dist/SchemaParser.js:114:11)
+      at file:///workspace/typescript/piglatin/domain.ts:90:72
+      at TestContext.<anonymous> (file:///workspace/typescript/piglatin/domain.test.ts:85:32)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    [cause]: "Composite {\n  '~effect/SchemaIssue/Issue': '~effect/SchemaIssue/Issue',\n  _tag: 'Composite',\n  ast: String {\n    '~effect/Schema': '~effect/Schema',\n    annotations: undefined,\n    checks: [ [Filter] ],\n    encoding: undefined,\n    context: undefined,\n    _tag: 'String'\n  },\n  issues: [\n    Filter {\n      '~effect/SchemaIssue/Issue': '~effect/SchemaIssue/Issue',\n      _tag: 'Filter',\n      filter: [Filter],\n      issue: [InvalidValue]\n    }\n  ]\n}"
+  }

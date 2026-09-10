@@ -1,0 +1,26 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> test:mbt
+> npm run test:mbt:contract
+
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> test:mbt:contract
+> node --test translate-contract.mbt.ts
+
+original, examples: 68 comparisons (40 accepted, 28 rejected), seed 42
+✔ original: consolidated contract examples (10619.526785ms)
+original, generated: 5100 comparisons (2366 accepted, 2734 rejected), seed 42
+✔ original: consolidated generated requests (27641.88768ms)
+composed, examples: 68 comparisons (40 accepted, 28 rejected), seed 42
+✔ composed: consolidated contract examples (11445.827242ms)
+composed, generated: 5100 comparisons (2366 accepted, 2734 rejected), seed 42
+✔ composed: consolidated generated requests (25729.553482ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 77063.951388

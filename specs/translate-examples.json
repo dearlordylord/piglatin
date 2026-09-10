@@ -1,0 +1,162 @@
+[
+  {
+    "description": "returns an empty string for an empty word",
+    "input": "",
+    "expected": ""
+  },
+  {
+    "description": "adds ay to words starting with a vowel",
+    "input": "apple",
+    "expected": "appleay"
+  },
+  {
+    "description": "adds ay to words starting with a vowel",
+    "input": "extra",
+    "expected": "extraay"
+  },
+  {
+    "description": "adds ay to words starting with a vowel",
+    "input": "igloo",
+    "expected": "iglooay"
+  },
+  {
+    "description": "adds ay to words starting with a vowel",
+    "input": "orange",
+    "expected": "orangeay"
+  },
+  {
+    "description": "adds ay to words starting with a vowel",
+    "input": "under",
+    "expected": "underay"
+  },
+  {
+    "description": "moves the first consonant to the end and adds ay",
+    "input": "hello",
+    "expected": "ellohay"
+  },
+  {
+    "description": "translates each word in a phrase",
+    "input": "hello world",
+    "expected": "ellohay orldway"
+  },
+  {
+    "description": "preserves capitalization when translating a phrase",
+    "input": "Hello Exciting world",
+    "expected": "Ellohay Excitingay orldway"
+  },
+  {
+    "description": "keeps a comma after the translated word",
+    "input": "hello, exciting world",
+    "expected": "ellohay, excitingay orldway"
+  },
+  {
+    "description": "preserves exclamation marks, commas, and capitalization",
+    "input": "hello! exciting, World",
+    "expected": "ellohay! excitingay, Orldway"
+  },
+  {
+    "description": "preserves leading, trailing, and repeated spaces",
+    "input": "  hello!   exciting,     World    ",
+    "expected": "  ellohay!   excitingay,     Orldway    "
+  },
+  {
+    "description": "keeps a question mark after the translated word",
+    "input": "hello?",
+    "expected": "ellohay?"
+  },
+  {
+    "description": "keeps repeated exclamation marks after the translated word",
+    "input": "hello!!",
+    "expected": "ellohay!!"
+  },
+  {
+    "description": "preserves tabs and newlines between words",
+    "input": "\thello!\t\texciting,\n\nWorld\n",
+    "expected": "\tellohay!\t\texcitingay,\n\nOrldway\n"
+  },
+  {
+    "description": "moves the initial consonant cluster to the end",
+    "input": "three",
+    "expected": "eethray"
+  },
+  {
+    "description": "preserves surrounding double quotes",
+    "input": "\"hello?\"",
+    "expected": "\"ellohay?\""
+  },
+  {
+    "description": "keeps all-uppercase words uppercase, including the suffix",
+    "input": "\"HELLO! EXTRA THREE\"",
+    "expected": "\"ELLOHAY! EXTRAAY EETHRAY\""
+  },
+  {
+    "description": "moves qu together as part of the initial consonant cluster",
+    "input": "queen squeal",
+    "expected": "eenquay ealsquay"
+  },
+  {
+    "description": "leaves numbers unchanged",
+    "input": "hello 123",
+    "expected": "ellohay 123"
+  },
+  {
+    "description": "punctuation separates adjacent words",
+    "input": "hello,world",
+    "expected": "ellohay,orldway"
+  },
+  {
+    "description": "punctuation keeps its position between digits",
+    "input": "1,2",
+    "expected": "1,2"
+  },
+  {
+    "description": "a prefix does not cross punctuation",
+    "input": "q!ueen",
+    "expected": "qay!ueenay"
+  },
+  {
+    "description": "quotes separate adjacent words",
+    "input": "\"hello\"\"World\"",
+    "expected": "\"ellohay\"\"Orldway\""
+  },
+  {
+    "description": "uppercase qu with quotes and repeated punctuation",
+    "input": "\"QUEEN?!\"",
+    "expected": "\"EENQUAY?!\""
+  },
+  {
+    "description": "title-case qu with punctuation",
+    "input": "Queen!!",
+    "expected": "Eenquay!!"
+  },
+  {
+    "description": "title-case cluster inside quotes",
+    "input": "\"Three?\"",
+    "expected": "\"Eethray?\""
+  },
+  {
+    "description": "uppercase vowel with quotes and punctuation",
+    "input": "\"EXTRA!!\"",
+    "expected": "\"EXTRAAY!!\""
+  },
+  {
+    "description": "quoted numbers with punctuation and leading zeros",
+    "input": "\"00123?!\"",
+    "expected": "\"00123?!\""
+  },
+  {
+    "description": "quotes around a phrase with mixed separators",
+    "input": "  \"Hello\tQUEEN!!\nexciting, world?\"  ",
+    "expected": "  \"Ellohay\tEENQUAY!!\nexcitingay, orldway?\"  "
+  },
+  {
+    "description": "clusters and numbers across tabs and newlines",
+    "input": "\t\"Three QUEENS!!\"\t123,\n\"Exciting squeals?\"\n",
+    "expected": "\t\"Eethray EENSQUAY!!\"\t123,\n\"Excitingay ealssquay?\"\n"
+  },
+  {
+    "description": "uppercase and title-case words without an aeiou vowel",
+    "input": "\"BRR!!\" Brr?",
+    "expected": "\"BRRAY!!\" Brray?"
+  }
+]

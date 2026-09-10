@@ -1,0 +1,11 @@
+[ok] No violation found (4128ms at 24 traces/second).
+Witnesses:
+reachedEmpty was witnessed in 86 trace(s) out of 100 explored (86.00%)
+reachedWord was witnessed in 92 trace(s) out of 100 explored (92.00%)
+reachedNumber was witnessed in 91 trace(s) out of 100 explored (91.00%)
+reachedPhrase was witnessed in 95 trace(s) out of 100 explored (95.00%)
+reachedQu was witnessed in 25 trace(s) out of 100 explored (25.00%)
+reachedVowelless was witnessed in 6 trace(s) out of 100 explored (6.00%)
+reachedUpper was witnessed in 86 trace(s) out of 100 explored (86.00%)
+reachedTitle was witnessed in 87 trace(s) out of 100 explored (87.00%)
+Use --seed=0x135282e --backend=typescript to reproduce.

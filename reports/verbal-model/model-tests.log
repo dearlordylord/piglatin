@@ -1,0 +1,52 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> spec:check
+> npm run spec:check:verbal
+
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> spec:check:verbal
+> quint typecheck batch_from_verbal.qnt && quint test batch_from_verbal_test.qnt --main batch_from_verbal_test --backend typescript --max-samples 1
+
+
+  batch_from_verbal_test
+    ok example01Test passed 1 test(s)
+    ok example02Test passed 1 test(s)
+    ok example03Test passed 1 test(s)
+    ok example04Test passed 1 test(s)
+    ok example05Test passed 1 test(s)
+    ok example06Test passed 1 test(s)
+    ok example07Test passed 1 test(s)
+    ok example08Test passed 1 test(s)
+    ok example09Test passed 1 test(s)
+    ok example10Test passed 1 test(s)
+    ok example11Test passed 1 test(s)
+    ok example12Test passed 1 test(s)
+    ok example13Test passed 1 test(s)
+    ok example14Test passed 1 test(s)
+    ok example15Test passed 1 test(s)
+    ok example16Test passed 1 test(s)
+    ok example17Test passed 1 test(s)
+    ok example18Test passed 1 test(s)
+    ok example19Test passed 1 test(s)
+    ok example20Test passed 1 test(s)
+    ok example21Test passed 1 test(s)
+    ok example22Test passed 1 test(s)
+    ok example23Test passed 1 test(s)
+    ok example24Test passed 1 test(s)
+    ok example25Test passed 1 test(s)
+    ok example26Test passed 1 test(s)
+    ok example27Test passed 1 test(s)
+    ok example28Test passed 1 test(s)
+    ok example29Test passed 1 test(s)
+    ok example30Test passed 1 test(s)
+    ok example31Test passed 1 test(s)
+    ok example32Test passed 1 test(s)
+    ok fullCorpusTest passed 1 test(s)
+    ok newClusterTest passed 1 test(s)
+    ok newVowelTest passed 1 test(s)
+    ok newVowellessTest passed 1 test(s)
+    ok newCompositionTest passed 1 test(s)
+    ok generatorScopeTest passed 1 test(s)
+
+  38 passing (279ms)

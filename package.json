@@ -1,0 +1,38 @@
+{
+  "name": "piglatin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "spec:check": "npm run spec:check:contract",
+    "spec:simulate": "npm run spec:simulate:contract",
+    "test:mbt": "npm run test:mbt:contract",
+    "coverage": "node scripts/coverage.mjs",
+    "crap": "node scripts/measure-crap.mjs",
+    "typecheck": "tsc --project tsconfig.json",
+    "test": "node --test *.test.ts",
+    "spec:check:composed": "quint typecheck translate-composed.qnt && quint test translate-composed_test.qnt --main translate_composed_test --max-samples 1",
+    "spec:check:original": "quint typecheck translate-original.qnt && quint test translate-original_test.qnt --main translate_original_test --max-samples 1",
+    "spec:simulate:composed": "quint run translate-composed.qnt --main translate_composed --invariant safety --witnesses sawCharacter sawEnd sawPunctuation sawQu --max-samples 200 --max-steps 50 --seed 42 --backend typescript --verbosity 1",
+    "spec:simulate:original": "quint run translate-original.qnt --main translate_original --invariant safety --witnesses sawQu sawDigitsAndPunctuation sawMixedCase --max-samples 200 --max-steps 50 --seed 42 --backend typescript --verbosity 1",
+    "test:mbt:composed": "node --test translate-composed.mbt.ts",
+    "test:mbt:original": "node --test translate-original.mbt.ts",
+    "test:mbt:shared": "node --test translate-shared.mbt.ts",
+    "spec:check:verbal": "quint typecheck batch_from_verbal.qnt && quint test batch_from_verbal_test.qnt --main batch_from_verbal_test --backend typescript --max-samples 1",
+    "spec:simulate:verbal": "quint run batch_from_verbal.qnt --main batch_from_verbal --backend typescript --max-samples 100 --max-steps 8 --seed 20260910 --invariant safety --witnesses reachedEmpty reachedWord reachedNumber reachedPhrase reachedQu reachedVowelless reachedUpper reachedTitle --verbosity 1",
+    "test:mbt:verbal": "node --test translate-verbal.mbt.ts",
+    "spec:check:contract": "quint typecheck translate-contract.qnt && quint typecheck translate-contract_harness.qnt && quint test translate-contract_test.qnt --backend typescript --max-samples 1 && quint test translate-contract_scenarios.qnt --backend typescript --max-samples 1",
+    "spec:simulate:contract": "quint run translate-contract_harness.qnt --backend typescript --max-samples 100 --max-steps 15 --seed 42 --invariant safety --witnesses reachedNonText sawWord sawBoundary sawPhrase sawInvalidToken sawInvalidCharacter sawArbitrary sawAccepted sawRejected --verbosity 1",
+    "test:mbt:contract": "node --test translate-contract.mbt.ts"
+  },
+  "devDependencies": {
+    "@crap4ts/crap4ts": "1.0.0",
+    "@firfi/quint-connect": "2.0.2-effect4.2",
+    "@informalsystems/quint": "0.32.0",
+    "@types/node": "24.13.3",
+    "istanbul-lib-instrument": "6.0.3",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "effect": "4.0.0-rc.112"
+  }
+}

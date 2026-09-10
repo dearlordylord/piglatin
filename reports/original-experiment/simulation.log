@@ -1,0 +1,6 @@
+[ok] No violation found (4179ms at 48 traces/second).
+Witnesses:
+sawQu was witnessed in 106 trace(s) out of 200 explored (53.00%)
+sawDigitsAndPunctuation was witnessed in 117 trace(s) out of 200 explored (58.50%)
+sawMixedCase was witnessed in 109 trace(s) out of 200 explored (54.50%)
+Use --seed=0x2a --backend=typescript to reproduce.

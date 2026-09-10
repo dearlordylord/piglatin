@@ -1,0 +1,48 @@
+
+  translate_contract_test
+    ok nonTextTest passed 1 test(s)
+    ok helloTest passed 1 test(s)
+    1) mixedTokenRejectedTest failed after 1 test(s)
+    2) punctuationRejectedTest failed after 1 test(s)
+    3) caseRejectedTest failed after 1 test(s)
+    4) yRejectedTest failed after 1 test(s)
+    5) qRejectedTest failed after 1 test(s)
+
+  2 passing (453ms)
+  5 failed
+
+  1) mixedTokenRejectedTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:5:32
+        5:   run mixedTokenRejectedTest = assert(outcomes(TextInput(List(49, 97))) == Set(Rejected(BadToken({ token: List(49, 97), reason: MixedLettersDigits }))))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0xb4a2576d063080 --match=mixedTokenRejectedTest to repeat.
+  2) punctuationRejectedTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:6:33
+        6:   run punctuationRejectedTest = assert(outcomes(TextInput(List(59))) == Set(Rejected(BadCharacter({ index: 0, code: 59 }))))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0xd1932f4ad966806c --match=punctuationRejectedTest to repeat.
+  3) caseRejectedTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:7:26
+        7:   run caseRejectedTest = assert(outcomes(TextInput(List(65))) == Set(Rejected(BadToken({ token: List(65), reason: UnsupportedCase }))))
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0x7f6449e7841b5673 --match=caseRejectedTest to repeat.
+  4) yRejectedTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:8:23
+        8:   run yRejectedTest = assert(outcomes(TextInput(List(114, 104, 121, 116, 104, 109))) == Set(Rejected(BadToken({ token: List(114, 104, 121, 116, 104, 109), reason: UndefinedY }))))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0x607eb8285e6a4ef --match=yRejectedTest to repeat.
+  5) qRejectedTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:9:23
+        9:   run qRejectedTest = assert(outcomes(TextInput(List(113, 104, 97, 116))) == Set(Rejected(BadToken({ token: List(113, 104, 97, 116), reason: UnsupportedQ }))))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0x60eefccf25486ea1 --match=qRejectedTest to repeat.
+
+
+  Use --verbosity=3 to show executions.
+  Further debug with: quint test --verbosity=3 translate-contract_test.qnt
+error: Tests failed

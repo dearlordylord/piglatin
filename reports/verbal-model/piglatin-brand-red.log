@@ -1,0 +1,7 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
+> typecheck
+> tsc --project tsconfig.json
+
+domain.typecheck.ts(54,3): error TS2578: Unused '@ts-expect-error' directive.
+domain.typecheck.ts(56,3): error TS2578: Unused '@ts-expect-error' directive.

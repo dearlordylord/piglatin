@@ -1,0 +1,18 @@
+original, generated: 5100 observations, seed 42
+✔ original: generated cases from inferred verbal rules (48327.043096ms)
+classical, generated: 5100 observations, seed 42
+✔ classical: generated cases from inferred verbal rules (15430.419308ms)
+cps, generated: 5100 observations, seed 42
+✔ cps: generated cases from inferred verbal rules (22870.036054ms)
+reducer, generated: 5100 observations, seed 42
+✔ reducer: generated cases from inferred verbal rules (44114.485021ms)
+composed, generated: 5100 observations, seed 42
+✔ composed: generated cases from inferred verbal rules (38440.404033ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 172028.05871

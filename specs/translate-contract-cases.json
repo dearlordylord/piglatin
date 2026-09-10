@@ -1,0 +1,339 @@
+[
+  {
+    "name": "returns an empty string for an empty word",
+    "input": "",
+    "expected": ""
+  },
+  {
+    "name": "adds ay to words starting with a vowel",
+    "input": "apple",
+    "expected": "appleay"
+  },
+  {
+    "name": "adds ay to words starting with a vowel",
+    "input": "extra",
+    "expected": "extraay"
+  },
+  {
+    "name": "adds ay to words starting with a vowel",
+    "input": "igloo",
+    "expected": "iglooay"
+  },
+  {
+    "name": "adds ay to words starting with a vowel",
+    "input": "orange",
+    "expected": "orangeay"
+  },
+  {
+    "name": "adds ay to words starting with a vowel",
+    "input": "under",
+    "expected": "underay"
+  },
+  {
+    "name": "moves the first consonant to the end and adds ay",
+    "input": "hello",
+    "expected": "ellohay"
+  },
+  {
+    "name": "translates each word in a phrase",
+    "input": "hello world",
+    "expected": "ellohay orldway"
+  },
+  {
+    "name": "preserves capitalization when translating a phrase",
+    "input": "Hello Exciting world",
+    "expected": "Ellohay Excitingay orldway"
+  },
+  {
+    "name": "keeps a comma after the translated word",
+    "input": "hello, exciting world",
+    "expected": "ellohay, excitingay orldway"
+  },
+  {
+    "name": "preserves exclamation marks, commas, and capitalization",
+    "input": "hello! exciting, World",
+    "expected": "ellohay! excitingay, Orldway"
+  },
+  {
+    "name": "preserves leading, trailing, and repeated spaces",
+    "input": "  hello!   exciting,     World    ",
+    "expected": "  ellohay!   excitingay,     Orldway    "
+  },
+  {
+    "name": "keeps a question mark after the translated word",
+    "input": "hello?",
+    "expected": "ellohay?"
+  },
+  {
+    "name": "keeps repeated exclamation marks after the translated word",
+    "input": "hello!!",
+    "expected": "ellohay!!"
+  },
+  {
+    "name": "preserves tabs and newlines between words",
+    "input": "\thello!\t\texciting,\n\nWorld\n",
+    "expected": "\tellohay!\t\texcitingay,\n\nOrldway\n"
+  },
+  {
+    "name": "moves the initial consonant cluster to the end",
+    "input": "three",
+    "expected": "eethray"
+  },
+  {
+    "name": "preserves surrounding double quotes",
+    "input": "\"hello?\"",
+    "expected": "\"ellohay?\""
+  },
+  {
+    "name": "keeps all-uppercase words uppercase, including the suffix",
+    "input": "\"HELLO! EXTRA THREE\"",
+    "expected": "\"ELLOHAY! EXTRAAY EETHRAY\""
+  },
+  {
+    "name": "moves qu together as part of the initial consonant cluster",
+    "input": "queen squeal",
+    "expected": "eenquay ealsquay"
+  },
+  {
+    "name": "leaves numbers unchanged",
+    "input": "hello 123",
+    "expected": "ellohay 123"
+  },
+  {
+    "name": "punctuation separates adjacent words",
+    "input": "hello,world",
+    "expected": "ellohay,orldway"
+  },
+  {
+    "name": "punctuation keeps its position between digits",
+    "input": "1,2",
+    "expected": "1,2"
+  },
+  {
+    "name": "a prefix does not cross punctuation",
+    "input": "q!ueen",
+    "expected": "qay!ueenay"
+  },
+  {
+    "name": "quotes separate adjacent words",
+    "input": "\"hello\"\"World\"",
+    "expected": "\"ellohay\"\"Orldway\""
+  },
+  {
+    "name": "uppercase qu with quotes and repeated punctuation",
+    "input": "\"QUEEN?!\"",
+    "expected": "\"EENQUAY?!\""
+  },
+  {
+    "name": "title-case qu with punctuation",
+    "input": "Queen!!",
+    "expected": "Eenquay!!"
+  },
+  {
+    "name": "title-case cluster inside quotes",
+    "input": "\"Three?\"",
+    "expected": "\"Eethray?\""
+  },
+  {
+    "name": "uppercase vowel with quotes and punctuation",
+    "input": "\"EXTRA!!\"",
+    "expected": "\"EXTRAAY!!\""
+  },
+  {
+    "name": "quoted numbers with punctuation and leading zeros",
+    "input": "\"00123?!\"",
+    "expected": "\"00123?!\""
+  },
+  {
+    "name": "quotes around a phrase with mixed separators",
+    "input": "  \"Hello\tQUEEN!!\nexciting, world?\"  ",
+    "expected": "  \"Ellohay\tEENQUAY!!\nexcitingay, orldway?\"  "
+  },
+  {
+    "name": "clusters and numbers across tabs and newlines",
+    "input": "\t\"Three QUEENS!!\"\t123,\n\"Exciting squeals?\"\n",
+    "expected": "\t\"Eethray EENSQUAY!!\"\t123,\n\"Excitingay ealssquay?\"\n"
+  },
+  {
+    "name": "uppercase and title-case words without an aeiou vowel",
+    "input": "\"BRR!!\" Brr?",
+    "expected": "\"BRRAY!!\" Brray?"
+  },
+  {
+    "name": "admitted extension: 'square SQUARE Square'",
+    "input": "square SQUARE Square",
+    "expected": "aresquay ARESQUAY Aresquay"
+  },
+  {
+    "name": "admitted extension: 'squint quorum'",
+    "input": "squint quorum",
+    "expected": "intsquay orumquay"
+  },
+  {
+    "name": "admitted extension: 'a q zzz ZZZ Zzz'",
+    "input": "a q zzz ZZZ Zzz",
+    "expected": "aay qay zzzay ZZZAY Zzzay"
+  },
+  {
+    "name": "admitted extension: '0 00123'",
+    "input": "0 00123",
+    "expected": "0 00123"
+  },
+  {
+    "name": "admitted extension: '1234567890123456789012345678901234567890'",
+    "input": "1234567890123456789012345678901234567890",
+    "expected": "1234567890123456789012345678901234567890"
+  },
+  {
+    "name": "admitted extension: ' \\t\\n,!?\"\"'",
+    "input": " \t\n,!?\"\"",
+    "expected": " \t\n,!?\"\""
+  },
+  {
+    "name": "admitted extension: 'strength'",
+    "input": "strength",
+    "expected": "engthstray"
+  },
+  {
+    "name": "unsupported: '1a'",
+    "input": "1a",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'a1'",
+    "input": "a1",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'hello 1a world'",
+    "input": "hello 1a world",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: ';'",
+    "input": ";",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: '.'",
+    "input": ".",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: \"it's\"",
+    "input": "it's",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'hello-world'",
+    "input": "hello-world",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'hELLo'",
+    "input": "hELLo",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'A'",
+    "input": "A",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'Q'",
+    "input": "Q",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'y'",
+    "input": "y",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'rhythm'",
+    "input": "rhythm",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'boy'",
+    "input": "boy",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'qu'",
+    "input": "qu",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'ququack'",
+    "input": "ququack",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'qhat'",
+    "input": "qhat",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'equal'",
+    "input": "equal",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: '\u00e9'",
+    "input": "\u00e9",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: '\ud83d\ude00'",
+    "input": "\ud83d\ude00",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'hello\\rworld'",
+    "input": "hello\rworld",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'hello\\xa0world'",
+    "input": "hello\u00a0world",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 'hELLo 1a'",
+    "input": "hELLo 1a",
+    "rejected": true
+  },
+  {
+    "name": "unsupported: None",
+    "input": null,
+    "rejected": true
+  },
+  {
+    "name": "unsupported: 42",
+    "input": 42,
+    "rejected": true
+  },
+  {
+    "name": "unsupported: True",
+    "input": true,
+    "rejected": true
+  },
+  {
+    "name": "unsupported: {}",
+    "input": {},
+    "rejected": true
+  },
+  {
+    "name": "unsupported: []",
+    "input": [],
+    "rejected": true
+  },
+  {
+    "name": "unsupported: ['hello']",
+    "input": [
+      "hello"
+    ],
+    "rejected": true
+  }
+]

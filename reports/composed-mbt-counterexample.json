@@ -1,0 +1,65 @@
+{
+  "seed": "42",
+  "traceIndex": 2,
+  "stepIndex": 16,
+  "events": [
+    {
+      "type": "character",
+      "value": "P"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "character",
+      "value": "7"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "character",
+      "value": "i"
+    },
+    {
+      "type": "character",
+      "value": "o"
+    },
+    {
+      "type": "character",
+      "value": "s"
+    },
+    {
+      "type": "end"
+    },
+    {
+      "type": "character",
+      "value": "2"
+    },
+    {
+      "type": "character",
+      "value": "?"
+    },
+    {
+      "type": "character",
+      "value": "8"
+    }
+  ],
+  "expected": "PAY7iosay2?8",
+  "actual": "PAY7iosay28?"
+}

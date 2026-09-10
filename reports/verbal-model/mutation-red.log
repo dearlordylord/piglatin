@@ -1,0 +1,25 @@
+✖ original: verbal specification examples (8754.634128ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10607.440322
+
+✖ failing tests:
+
+test at translate-verbal.mbt.ts:7:3
+✖ original: verbal specification examples (8754.634128ms)
+  {
+    _tag: 'StateMismatchError',
+    message: 'State mismatch at trace 0, step 2, action "Translate" (seed: 42)\n' +
+      'Expected: {"input":"apple","output":"appleay"}\n' +
+      'Actual: {"input":"apple","output":"applexx"}',
+    traceIndex: 0,
+    stepIndex: 2,
+    expected: { input: 'apple', output: 'appleay' },
+    actual: { input: 'apple', output: 'applexx' },
+    showDiff: true
+  }

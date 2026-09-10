@@ -1,0 +1,18 @@
+original, examples: 33 observations, seed 42
+✔ original: verbal specification examples (9919.712983ms)
+classical, examples: 33 observations, seed 42
+✔ classical: verbal specification examples (14902.758655ms)
+cps, examples: 33 observations, seed 42
+✔ cps: verbal specification examples (13635.370132ms)
+reducer, examples: 33 observations, seed 42
+✔ reducer: verbal specification examples (4452.247978ms)
+composed, examples: 33 observations, seed 42
+✔ composed: verbal specification examples (6701.813692ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50727.612045

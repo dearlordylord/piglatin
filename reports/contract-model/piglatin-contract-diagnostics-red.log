@@ -1,0 +1,17 @@
+
+  translate_contract_test
+    1) characterAndTokenProblemsCoexistTest failed after 1 test(s)
+
+  1 failed
+
+  1) characterAndTokenProblemsCoexistTest:
+       Error [QNT508]: Assertion failed
+        at /workspace/typescript/piglatin/translate-contract_test.qnt:79:46
+        79:   run characterAndTokenProblemsCoexistTest = assert(outcomes(TextInput(List(49, 97, 59))).size() == 2)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Use --seed=0x182fec90a8b78a --match=characterAndTokenProblemsCoexistTest to repeat.
+
+
+  Use --verbosity=3 to show executions.
+  Further debug with: quint test --verbosity=3 translate-contract_test.qnt
+error: Tests failed

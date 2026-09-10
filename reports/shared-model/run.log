@@ -1,0 +1,46 @@
+original: replayed 100 traces, 5100 observations, seed 42
+✔ original batch output agrees with the original-derived model (13194.137452ms)
+classical: replayed 100 traces, 5100 observations, seed 42
+✔ classical batch output agrees with the original-derived model (11596.254621ms)
+cps: replayed 100 traces, 5100 observations, seed 42
+✔ cps batch output agrees with the original-derived model (10207.97694ms)
+✖ reducer batch output agrees with the original-derived model (3104.198168ms)
+✖ composed batch output agrees with the original-derived model (4112.576896ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44104.272119
+
+✖ failing tests:
+
+test at translate-shared.mbt.ts:10:3
+✖ reducer batch output agrees with the original-derived model (3104.198168ms)
+  {
+    _tag: 'StateMismatchError',
+    message: 'State mismatch at trace 0, step 26, action "Append" (seed: 42)\n' +
+      'Expected: {"input":";","output":";ay"}\n' +
+      'Actual: {"input":";","output":";AY"}',
+    traceIndex: 0,
+    stepIndex: 26,
+    expected: { input: ';', output: ';ay' },
+    actual: { input: ';', output: ';AY' },
+    showDiff: true
+  }
+
+test at translate-shared.mbt.ts:10:3
+✖ composed batch output agrees with the original-derived model (4112.576896ms)
+  {
+    _tag: 'StateMismatchError',
+    message: 'State mismatch at trace 0, step 26, action "Append" (seed: 42)\n' +
+      'Expected: {"input":";","output":";ay"}\n' +
+      'Actual: {"input":";","output":";AY"}',
+    traceIndex: 0,
+    stepIndex: 26,
+    expected: { input: ';', output: ';ay' },
+    actual: { input: ';', output: ';AY' },
+    showDiff: true
+  }

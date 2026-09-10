@@ -1,0 +1,18 @@
+{
+  "sources": [
+    "domain.ts",
+    "translate.ts",
+    "translate-composed.ts"
+  ],
+  "coverage": {
+    "path": "coverage/coverage-final.json",
+    "format": "istanbul",
+    "command": [
+      "npm",
+      "run",
+      "coverage"
+    ]
+  },
+  "format": "json",
+  "threshold": 8
+}
