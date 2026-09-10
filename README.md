@@ -1,5 +1,6 @@
 # "Pig latin" string manipulation oneshot experiment.
 
+Example-based tests: [translate.test.ts](translate.test.ts) (read to get initial intuition of what the task logic is about)
 Naïve imperative implementation: [translate.ts](translate.ts), although short, proven to be (subjectively) difficult to derive specifications from.
 
 ## Experiment1: derive CPS-style and a Reducer-style implementations with LLMs.
