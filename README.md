@@ -1,29 +1,5 @@
 # "Pig latin" string manipulation oneshot experiment.
 
-## Interactive visualization
-
-Live: **[Pig Latin visualization](https://piglatin-5f1.pages.dev)**.
-
-Run `npm ci`, then `npm run visualize`, and open `http://localhost:4324`.
-The server binds to `0.0.0.0`; use the host's IP to access it from another machine.
-Set `PORT` to change the port.
-
-The selected Split layout combines the public contract outcome, an observed state
-diagram, a decision trace, and the current reducer state. Editing the input updates
-every view; Left/Right arrow keys navigate steps outside the text input. The trace
-table follows the selected step. These views use the actual TypeScript implementation;
-they do not execute Quint in the browser.
-
-For Cloudflare Pages, run `npm run build:site`. The output in `dist/site` includes
-the static interface and a bundled Pages Function for `/api`. The Function and
-local Node server share the same parser and walkthrough code.
-
-Run `npm run preview:site` to preview the Cloudflare runtime locally, or
-`npm run deploy:site` to deploy with an authenticated Wrangler account.
-Git-connected Pages settings: repository `dearlordylord/piglatin`, branch `master`,
-root directory empty, build command `npm run build:site`, output directory `dist/site`.
-The Cloudflare project is `piglatin`; pushes to `master` deploy automatically.
-
 Example-based tests: [translate.test.ts](translate.test.ts) (read to get initial intuition of what the task logic is about)
 Naïve imperative implementation: [translate.ts](translate.ts), although short, proven to be (subjectively) difficult to derive specifications from.
 
