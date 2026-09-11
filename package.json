@@ -23,15 +23,20 @@
     "spec:check:contract": "quint typecheck translate-contract.qnt && quint typecheck translate-contract_harness.qnt && quint test translate-contract_test.qnt --backend typescript --max-samples 1 && quint test translate-contract_scenarios.qnt --backend typescript --max-samples 1",
     "spec:simulate:contract": "quint run translate-contract_harness.qnt --backend typescript --max-samples 100 --max-steps 15 --seed 42 --invariant safety --witnesses reachedNonText sawWord sawBoundary sawPhrase sawInvalidToken sawInvalidCharacter sawArbitrary sawAccepted sawRejected --verbosity 1",
     "test:mbt:contract": "node --test translate-contract.mbt.ts",
-    "visualize": "node visualization-server.ts"
+    "visualize": "node visualization-server.ts",
+    "build:site": "node scripts/build-site.mjs",
+    "preview:site": "npm run build:site && wrangler pages dev dist/site",
+    "deploy:site": "npm run build:site && wrangler pages deploy dist/site --project-name piglatin --branch master"
   },
   "devDependencies": {
     "@crap4ts/crap4ts": "1.0.0",
     "@firfi/quint-connect": "2.0.2-effect4.2",
     "@informalsystems/quint": "0.32.0",
     "@types/node": "24.13.3",
+    "esbuild": "0.28.2",
     "istanbul-lib-instrument": "6.0.3",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "wrangler": "4.131.0"
   },
   "dependencies": {
     "effect": "4.0.0-rc.112"

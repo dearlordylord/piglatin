@@ -12,8 +12,14 @@ every view; Left/Right arrow keys navigate steps outside the text input. The tra
 table follows the selected step. These views use the actual TypeScript implementation;
 they do not execute Quint in the browser.
 
-Cloudflare deployment and a custom domain are planned separately. This version runs
-as a Node server locally.
+For Cloudflare Pages, run `npm run build:site`. The output in `dist/site` includes
+the static interface and a bundled Pages Function for `/api`. The Function and
+local Node server share the same parser and walkthrough code.
+
+Run `npm run preview:site` to preview the Cloudflare runtime locally, or
+`npm run deploy:site` to deploy with an authenticated Wrangler account.
+Git-connected Pages settings: repository `dearlordylord/piglatin`, branch `master`,
+root directory empty, build command `npm run build:site`, output directory `dist/site`.
 
 Example-based tests: [translate.test.ts](translate.test.ts) (read to get initial intuition of what the task logic is about)
 Naïve imperative implementation: [translate.ts](translate.ts), although short, proven to be (subjectively) difficult to derive specifications from.

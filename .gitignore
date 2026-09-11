@@ -3,6 +3,7 @@ node_modules/
 coverage/
 .tools/
 .mbt-traces/
+.wrangler/
 dist/
 *.tsbuildinfo
 __pycache__/
