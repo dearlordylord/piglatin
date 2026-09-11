@@ -273,3 +273,12 @@ consistent diagram scope, and automatic scrolling inside the trace table.
 `npm run visualize` serves it locally; deployment and a custom domain remain future
 work. The visualization explains the TypeScript behavior and written contract;
 it is not an additional executable Quint oracle.
+
+We then deployed the selected visualization to Cloudflare Pages, following the
+Git-connected setup used by the Huly MCP homepage. The local Node server and Pages
+Function share the trace-building module. A bundled `_worker.js` handles `/api`;
+the remaining interface is static. New API tests went red → green, all 75 ordinary
+tests passed, and the interface was checked in the local Cloudflare runtime.
+Project `piglatin` is connected to `dearlordylord/piglatin` on `master` and serves
+`https://piglatin-5f1.pages.dev`. The initial Git-based deployment succeeded; custom
+domain selection is separate from the working Pages deployment.
