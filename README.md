@@ -1,5 +1,20 @@
 # "Pig latin" string manipulation oneshot experiment.
 
+## Interactive visualization
+
+Run `npm ci`, then `npm run visualize`, and open `http://localhost:4324`.
+The server binds to `0.0.0.0`; use the host's IP to access it from another machine.
+Set `PORT` to change the port.
+
+The selected Split layout combines the public contract outcome, an observed state
+diagram, a decision trace, and the current reducer state. Editing the input updates
+every view; Left/Right arrow keys navigate steps outside the text input. The trace
+table follows the selected step. These views use the actual TypeScript implementation;
+they do not execute Quint in the browser.
+
+Cloudflare deployment and a custom domain are planned separately. This version runs
+as a Node server locally.
+
 Example-based tests: [translate.test.ts](translate.test.ts) (read to get initial intuition of what the task logic is about)
 Naïve imperative implementation: [translate.ts](translate.ts), although short, proven to be (subjectively) difficult to derive specifications from.
 
@@ -38,4 +53,3 @@ A negative side is that qnt spec remains, although more precise, still less read
 - reducer version helped with business logic and requirements readability, being very explicit in its intent
 - it is clear that the reducer version is much less performant, and maybe shall be used as an oracle in property-based testing
 - qnt spec came better out of verbal specs, when LLMs dont look at the code; it's not clear if it's general behaviour or just happened locally
-

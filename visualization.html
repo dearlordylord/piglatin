@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pig Latin · Contract walkthrough</title>
+<link rel="stylesheet" href="/visualization.css">
+</head>
+<body>
+<main id="app">
+<nav>
+<a href="https://github.com/dearlordylord/piglatin">Source code</a>
+<a href="https://github.com/dearlordylord/piglatin/blob/master/SPEC.md">Specification</a>
+</nav>
+<div class="eyebrow">Contract + implementation</div>
+<h1>The contract, traced through code.</h1>
+<p>
+</p>
+<div class="panel" id="input-panel">
+<textarea id="input">Hello! queen</textarea>
+<div id="presets">
+</div>
+<button class="primary" id="load">Restart walkthrough</button>
+<span id="error" class="bad">
+</span>
+</div>
+<section class="panel" id="contract-panel">
+<div class="eyebrow">Contract · whole request</div>
+<div id="contract">
+</div>
+<details>
+<summary>Word rotation and preserved fragments</summary>
+<div id="fragments">
+</div>
+</details>
+<p class="muted">Output and admission use the actual public API. Explanations illustrate SPEC.md; this is not a Quint execution.</p>
+</section>
+<div id="walkthrough" data-tab="diagram">
+<div class="panel" id="step-controls">
+<div id="chars">
+</div>
+<button id="back" aria-keyshortcuts="ArrowLeft">← Back</button>
+<button class="primary" id="next" aria-keyshortcuts="ArrowRight">Next decision →</button>
+<button id="end">Jump to result</button>
+<span id="count" aria-live="polite">
+</span>
+<span class="muted"> · ← / → to step</span>
+</div>
+<section class="panel" id="state-diagram">
+</section>
+<section class="panel" id="decision-trace">
+</section>
+<div class="grid" id="inspector">
+<section class="panel">
+<div class="eyebrow">Selected decision</div>
+<h2 id="rule">
+</h2>
+<p id="explain">
+</p>
+<div class="eyebrow">Committed output</div>
+<div id="output" class="result">
+</div>
+</section>
+<section class="panel">
+<h2>Reducer state</h2>
+<dl id="state">
+</dl>
+</section>
+</div>
+</div>
+<footer>Pig Latin · contract and composed implementation</footer>
+</main>
+<script src="/visualization.js">
+</script>
+</body>
+</html>

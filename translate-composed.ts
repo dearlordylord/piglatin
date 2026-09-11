@@ -87,7 +87,7 @@ function decideWordCharacter(state: State, character: WordCharacter): Decision {
       return { kind: "appendStem", state, character };
   }
 }
-const decide = firstMatch(fallback, whitespace, leadingQuote, trailingPunctuation, quContinuation);
+export const decide = firstMatch(fallback, whitespace, leadingQuote, trailingPunctuation, quContinuation);
 
 function composeObservers(...observers: Observer<ObservedClassification>[]): Observer<ObservedClassification> {
   return (classification, character) => observers.reduce((current, observe) => observe(current, character), classification);

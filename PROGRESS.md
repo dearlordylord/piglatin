@@ -262,3 +262,14 @@ the shared parser. The existing gate went red → green without raising its thre
 of 8. Maximum function scores changed from 9 → 6 (original), 10 → 7 (composed),
 and 11 → 5 (shared domain). This reduces complexity per function; it does not
 claim fewer overall decisions or establish specification fidelity.
+
+We then explored interactive visualizations in separate Git worktrees: an
+implementation walkthrough, an exploration timeline, and a contract explorer.
+The user discarded the timeline and combined contract and implementation views.
+Further experiments added an observed state diagram and a decision trace, then
+compared three arrangements. The user selected A — Split. We retained that view
+in the main project with live input refresh, synchronized keyboard navigation,
+consistent diagram scope, and automatic scrolling inside the trace table.
+`npm run visualize` serves it locally; deployment and a custom domain remain future
+work. The visualization explains the TypeScript behavior and written contract;
+it is not an additional executable Quint oracle.

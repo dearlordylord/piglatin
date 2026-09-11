@@ -22,7 +22,8 @@
     "test:mbt:verbal": "node --test translate-verbal.mbt.ts",
     "spec:check:contract": "quint typecheck translate-contract.qnt && quint typecheck translate-contract_harness.qnt && quint test translate-contract_test.qnt --backend typescript --max-samples 1 && quint test translate-contract_scenarios.qnt --backend typescript --max-samples 1",
     "spec:simulate:contract": "quint run translate-contract_harness.qnt --backend typescript --max-samples 100 --max-steps 15 --seed 42 --invariant safety --witnesses reachedNonText sawWord sawBoundary sawPhrase sawInvalidToken sawInvalidCharacter sawArbitrary sawAccepted sawRejected --verbosity 1",
-    "test:mbt:contract": "node --test translate-contract.mbt.ts"
+    "test:mbt:contract": "node --test translate-contract.mbt.ts",
+    "visualize": "node visualization-server.ts"
   },
   "devDependencies": {
     "@crap4ts/crap4ts": "1.0.0",
