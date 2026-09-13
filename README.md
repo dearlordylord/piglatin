@@ -38,6 +38,8 @@ The realisation that a reducer/state machine event visualisation isn't the last 
 
 LLM one-shot a nice visualisation that animates the word transformation using the events. 
 
+![Scrubbing the event bar animates the letters of “square” into Pig Latin.](docs/word-transformation.gif)
+
 ## Conclusions, recommendations
 
 - qnt spec helps with precision, but not necessarily with spec readability
