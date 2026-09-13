@@ -163,12 +163,12 @@ function inspectorView(trace: Trace, index: number, h: Builder): Html {
 export const view = (model: Model, h: Builder): Document => {
   const index = Math.floor(model.position), trace = model.result;
   return {
-    title: "Pig Latin · Contract walkthrough", canonical: "https://piglatin.curatorman.com/",
+    title: "Piglatin Incorporated · and animated", canonical: "https://piglatin.curatorman.com/",
     body: h.main([h.Id("app")], [
       h.nav([], [h.a([h.Class("github-link"), h.Href("https://github.com/dearlordylord/piglatin"), h.AriaLabel("View project on GitHub"), h.Title("View project on GitHub")], [
         h.svg([h.Width("24"), h.Height("24"), h.ViewBox("0 0 24 24"), h.Fill("currentColor"), h.AriaHidden(true), h.Attribute("focusable", "false")], [h.path([h.D(GITHUB_PATH)])]),
       ])]),
-      h.div([h.Class("eyebrow")], ["Contract + implementation"]), h.h1([], ["The contract, traced through code."]), h.p([], []),
+      h.h1([], ["Piglatin Incorporated"]), h.p([], ["and animated"]),
       inputView(model.source, h), lazyContract(contractView, [model.source, trace, h]),
       h.div([h.Id("walkthrough"), h.Hidden(!trace.ok)], trace.ok && model.transformation ? [
         motionView(model.transformation, trace, model.position, h),
