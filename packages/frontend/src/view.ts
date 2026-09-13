@@ -45,7 +45,6 @@ function contractView(source: string, result: Model["result"], h: Builder): Html
     ]));
   }
   return h.section([h.Id("contract-panel"), h.Class("panel")], [
-    h.div([h.Class("eyebrow")], ["Contract · whole input"]),
     h.div([h.Id("contract")], result.ok
       ? [h.h2([], ["Accepted"]), h.div([h.Class("result")], [show(result.output)])]
       : [h.h2([], ["Rejected"]), h.p([], [result.error]), h.p([], ["No translation or reducer walkthrough runs for this input."])]),
