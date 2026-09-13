@@ -75,16 +75,26 @@ scrub message → fractional position → shared layout → keyed SVG view
 ```
 
 `app.ts` defines the Schema-backed Foldkit model and pure update function.
-`ChangedInput` calls the core's `visualize` synchronously and compiles the letter
-model once. Invalid input produces a rejection and no animation. `Scrubbed`
-changes only the position, preserving the trace and letter model by reference.
+`ChangedInput` calls the core's `visualize` synchronously. The resulting trace
+already contains the semantic transformation. Invalid input produces a rejection and no animation. `Scrubbed`
+changes only the position, preserving the trace and its transformation by reference.
 Event and diagram selections use the same seek operation.
 
-`transformation.ts` implements `compileTransformation` and the pure
-`transformationFrame(model, time)` function. Stable glyph identities and the
-prefix split come from the trace; final characters come from its actual output.
-Smoothstep interpolation moves letters into prefix/stem lanes and then into the
-result at the boundary. Suffix insertion and capitalization crossfade at commitment.
+The core's `word-plan.ts` owns suffix insertion, rotation, preservation, and
+capitalization. The reducer and explanatory trace consume the same assembly plan.
+`trace.ts` records actual read and commit events while traversing reducer decisions;
+it does not ask the frontend to recover boundaries from text. The trace supplies
+fragments, original/final characters, source/output indices, roles, case style,
+assembly parts, and event references. Both the explanation and animation consume
+these facts. The introductory example outputs also come from the core.
+
+The frontend's `transformation.ts` implements the pure
+`transformationFrame(facts, time)` function. It computes geometry from the supplied
+source/output indices and measured fragment lengths. It contains no tokenizer,
+suffix constant, rotation rule, or capitalization classifier. Smoothstep
+interpolation moves letters into lanes and then into the result at the supplied
+commit event. Preserved characters travel directly as they are read; this is
+visual choreography, and their actual commit events remain in the core trace.
 
 Each frame computes shared layout before letter poses. Suffix growth shifts
 subsequent words and recenters the assembly. Every letter uses those same current

@@ -1,9 +1,16 @@
 import { Option } from "effect";
 import { createLazy, type Document, type Html, type HtmlBuilder } from "foldkit/html";
-import type { State, Step, Trace } from "@piglatin/core";
+import { WORD_SUFFIX, visualize, type State, type Step, type Trace, type Transformation } from "@piglatin/core";
 import type { Model } from "./app.ts";
 import { Message } from "./messages.ts";
-import { transformationFrame, visible, type TransformationModel } from "./transformation.ts";
+import { transformationFrame, canvasWidth, visible } from "./transformation.ts";
+
+function example(source: string): Trace {
+  const result = visualize(source);
+  if (!result.ok) throw new Error(result.error);
+  return result;
+}
+const helloExample = example("hello"), appleExample = example("apple");
 
 type Builder = HtmlBuilder<Message>;
 const show = (value: unknown) => JSON.stringify(value) ?? "absent";
@@ -29,19 +36,17 @@ function inputView(source: string, h: Builder): Html {
   ]);
 }
 
-function contractView(source: string, result: Model["result"], h: Builder): Html {
+function contractView(result: Model["result"], h: Builder): Html {
   const fragments: Html[] = [];
-  if (result.ok) for (const match of source.matchAll(/[a-zA-Z0-9]+|[^a-zA-Z0-9]/g)) {
-    const word = match[0];
-    if (!/^[a-zA-Z]+$/.test(word)) {
-      fragments.push(h.p([], [h.span([h.Class("tag")], [show(word)]), " Preserved exactly"]));
+  if (result.ok) for (const fragment of result.transformation.fragments) {
+    if (fragment.kind === "preserved") {
+      fragments.push(h.p([], [h.span([h.Class("tag")], [show(fragment.source)]), " Preserved exactly"]));
       continue;
     }
-    const state = result.steps[match.index + word.length].state;
     fragments.push(h.p([], [
-      h.strong([], [word]), " → ", h.span([h.Class("tag")], [state.stem?.toLowerCase() || "∅"]),
-      " + ", h.span([h.Class("tag")], [state.prefix?.toLowerCase() || "∅"]), " + ", h.span([h.Class("tag")], ["ay"]),
-      ` · restore ${word === word.toUpperCase() ? "uppercase" : word[0] === word[0].toUpperCase() ? "title case" : "lowercase"}`,
+      h.strong([], [fragment.source]), " → ",
+      ...fragment.parts.flatMap((part, index) => [index > 0 ? " + " : "", h.span([h.Class("tag")], [part.text || "∅"])]),
+      ` · restore ${fragment.casing}`,
     ]));
   }
   return h.section([h.Id("contract-panel"), h.Class("panel")], [
@@ -52,16 +57,17 @@ function contractView(source: string, result: Model["result"], h: Builder): Html
   ]);
 }
 
-function motionView(model: TransformationModel, trace: Trace, time: number, h: Builder): Html {
+function motionView(model: Transformation, trace: Trace, time: number, h: Builder): Html {
   const poses = transformationFrame(model, time);
+  const width = canvasWidth(model);
   const lo = Math.floor(time), hi = Math.min(lo + 1, trace.steps.length - 1);
   return h.section([h.Id("transformation-view"), h.Class("panel")], [
     h.div([h.Class("motion-viewport"), h.Tabindex(0), h.Role("region"), h.AriaLabel("Word transformation; scroll horizontally for long inputs")], [
-      h.svg([h.Id("motion-stage"), h.ViewBox(`0 0 ${model.width} 360`), h.Style({ minWidth: `${model.width}px` }), h.Role("img"), h.AriaLabel("Letters transforming at the selected event position")], [
+      h.svg([h.Id("motion-stage"), h.ViewBox(`0 0 ${width} 360`), h.Style({ minWidth: `${width}px` }), h.Role("img"), h.AriaLabel("Letters transforming at the selected event position")], [
         ...["INPUT", "PREFIX", "STEM", "ASSEMBLY → RESULT"].map((label, i) => h.keyed("text")(`lane-${i}`, [h.X("16"), h.Y(String(26 + i * 80)), h.Class("motion-lane-label")], [label])),
-        ...model.glyphs.flatMap((glyph, i) => glyph.role === "suffix" ? [] : [h.keyed("text")(`ghost-${glyph.id}`, [h.X(String(poses[i].sourceX)), h.Y("65"), h.Class("motion-ghost"), h.TextAnchor("middle"), h.Opacity(".22")], [visible(glyph.source)])]),
-        ...model.glyphs.map((glyph, i) => {
-          const pose = poses[i];
+        ...poses.flatMap(({ letter: glyph, sourceX }) => glyph.sourceIndex === null ? [] : [h.keyed("text")(`ghost-${glyph.id}`, [h.X(String(sourceX)), h.Y("65"), h.Class("motion-ghost"), h.TextAnchor("middle"), h.Opacity(".22")], [visible(glyph.source)])]),
+        ...poses.map(pose => {
+          const glyph = pose.letter;
           return h.keyed("g")(glyph.id, [h.DataAttribute("glyph", glyph.id), h.Class(`motion-glyph ${glyph.role}`), h.Transform(`translate(${pose.x},${pose.y})`), h.Opacity(String(pose.opacity))], [
             h.text([h.TextAnchor("middle"), h.Opacity(String(1 - pose.caseProgress))], [visible(glyph.source)]),
             h.text([h.TextAnchor("middle"), h.Opacity(String(pose.caseProgress))], [visible(glyph.final)]),
@@ -169,15 +175,15 @@ export const view = (model: Model, h: Builder): Document => {
       ])]),
       h.h1([], ["Piglatin Incorporated"]), h.p([], ["and animated"]),
       h.p([h.Id("piglatin-intro")], [
-        "Pig Latin is a word game: shift the opening consonants to the end, then add “ay” — hello becomes ellohay. ",
+        `Pig Latin is a word game: shift the opening consonants to the end, then add “${WORD_SUFFIX}” — hello becomes ${helloExample.output}. `,
         h.a([h.Href("https://www.dictionary.com/articles/pig-latin")], ["About Pig Latin"]),
-        ". Here, words starting with a vowel simply gain “ay”: ",
+        `. Here, words starting with a vowel simply gain “${WORD_SUFFIX}”: `,
         h.span([h.Class("example-stem")], ["apple"]), " becomes ",
-        h.span([], [h.span([h.Class("example-stem")], ["apple"]), h.span([h.Class("example-suffix")], ["ay"])]), ".",
+        h.span([], appleExample.transformation.fragments.flatMap(fragment => fragment.letters.map(letter => h.span([h.Class(`example-${letter.role}`)], [letter.final])))), ".",
       ]),
-      inputView(model.source, h), lazyContract(contractView, [model.source, trace, h]),
-      h.div([h.Id("walkthrough"), h.Hidden(!trace.ok)], trace.ok && model.transformation ? [
-        motionView(model.transformation, trace, model.position, h),
+      inputView(model.source, h), lazyContract(contractView, [trace, h]),
+      h.div([h.Id("walkthrough"), h.Hidden(!trace.ok)], trace.ok ? [
+        motionView(trace.transformation, trace, model.position, h),
         lazyControls(controlsView, [model.source, trace, index, h]), lazyDiagram(diagramView, [trace, index, h]),
         lazyTrace(traceView, [trace, index, h]), lazyInspector(inspectorView, [trace, index, h]),
       ] : []),

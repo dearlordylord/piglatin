@@ -1,3 +1,4 @@
+import { planWord } from "./word-plan.ts";
 import {
   withParsedInput, type TranslationInput, Character, WordCharacter, Consonant, Vowel, Prefix, Stem,
   isConsonant, isVowel, isUCharacter, isQPrefix,
@@ -133,12 +134,7 @@ function appendStem(state: StemState, character: WordCharacter): StemState {
 }
 function finishWord(state: State): string {
   if (state.kind === "leading" || state.kind === "trailingPunctuation") return "";
-  const stem = state.kind === "stem" ? state.stem : "";
-  if (state.classification.onlyDigits) return state.prefix + stem;
-  const translated = stem + state.prefix.toLowerCase() + "ay";
-  if (state.classification.allUppercase) return translated.toUpperCase();
-  if (state.classification.capitalized) return translated[0].toUpperCase() + translated.slice(1);
-  return translated;
+  return planWord(state).output;
 }
 
 function applyDecision(decision: Decision): State {

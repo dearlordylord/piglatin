@@ -2,7 +2,8 @@
   "sources": [
     "packages/core/src/domain.ts",
     "translate.ts",
-    "packages/core/src/translate.ts"
+    "packages/core/src/translate.ts",
+    "packages/core/src/word-plan.ts"
   ],
   "coverage": {
     "path": "coverage/coverage-final.json",

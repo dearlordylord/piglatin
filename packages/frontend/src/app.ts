@@ -1,20 +1,18 @@
 import { Effect, Schema } from "effect";
 import { Command, Render, type Runtime, type Update } from "foldkit";
 import { TraceResult, visualize } from "@piglatin/core";
-import { TransformationModel, compileTransformation } from "./transformation.ts";
 import { Message } from "./messages.ts";
 
 export const Model = Schema.Struct({
   source: Schema.String,
   position: Schema.Number,
   result: TraceResult,
-  transformation: Schema.NullOr(TransformationModel),
 });
 export interface Model extends Schema.Schema.Type<typeof Model> {}
 
 export function modelForInput(source: string): Model {
   const result = visualize(source);
-  return { source, position: 0, result, transformation: result.ok ? compileTransformation(source, result) : null };
+  return { source, position: 0, result };
 }
 
 // The only UI command adjusts the trace's own scroll container after rendering.
