@@ -6,6 +6,7 @@ const assets = new Map([
   ["/", ["visualization.html", "text/html; charset=utf-8"]],
   ["/visualization.css", ["visualization.css", "text/css; charset=utf-8"]],
   ["/visualization.js", ["visualization.js", "text/javascript; charset=utf-8"]],
+  ["/transformation-view.js", ["transformation-view.js", "text/javascript; charset=utf-8"]],
 ]);
 const port = Number(process.env.PORT ?? 4324);
 

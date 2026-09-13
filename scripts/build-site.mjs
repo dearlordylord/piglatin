@@ -7,6 +7,7 @@ await Promise.all([
   copyFile("visualization.html", "dist/site/index.html"),
   copyFile("visualization.css", "dist/site/visualization.css"),
   copyFile("visualization.js", "dist/site/visualization.js"),
+  copyFile("transformation-view.js", "dist/site/transformation-view.js"),
 ]);
 await build({
   entryPoints: ["visualization-worker.ts"],
