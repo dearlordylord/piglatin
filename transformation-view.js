@@ -1,6 +1,7 @@
 // The user's drag is time. Frames are pure functions of trace and event position;
 // perceptual clarity must be evaluated by watching motion while scrubbing.
 const pitch = 34;
+const suffix = 'ay';
 const visible = c => ({ ' ': '␠', '\t': '⇥', '\n': '↵' }[c] ?? c);
 const ease = value => {
   const t = Math.max(0, Math.min(1, value));
@@ -26,14 +27,14 @@ export function compileTransformation(source, trace) {
         role: word ? (i < cut ? 'prefix' : 'stem') : 'preserved', read: start + i + 1,
       });
     }
-    if (word) for (let i = 0; i < 2; i++) {
+    if (word) for (let i = 0; i < suffix.length; i++) {
       glyphs.push({
-        id: `suffix-${start}-${i}`, tokenIndex, index: i, source: 'ay'[i],
+        id: `suffix-${start}-${i}`, tokenIndex, index: i, source: suffix[i],
         final: trace.output[outputOffset + raw.length + i], destination: raw.length + i,
         role: 'suffix', read: end + 1,
       });
     }
-    outputOffset += raw.length + (word ? 2 : 0);
+    outputOffset += raw.length + (word ? suffix.length : 0);
   }
   return { tokens, glyphs, sourceLength: source.length, width: Math.max(820, trace.output.length * pitch + 100) };
 }
@@ -44,7 +45,7 @@ export function transformationFrame(model, time) {
   let added = 0;
   const offsets = model.tokens.map(token => {
     const offset = token.start + added;
-    added += token.word ? 2 * ease(time - (token.commit - 1)) : 0;
+    added += token.word ? suffix.length * ease(time - (token.commit - 1)) : 0;
     return offset;
   });
   const left = (model.width - (model.sourceLength + added) * pitch) / 2 + pitch / 2;
