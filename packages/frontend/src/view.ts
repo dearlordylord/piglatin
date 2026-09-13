@@ -168,6 +168,11 @@ export const view = (model: Model, h: Builder): Document => {
         h.svg([h.Width("24"), h.Height("24"), h.ViewBox("0 0 24 24"), h.Fill("currentColor"), h.AriaHidden(true), h.Attribute("focusable", "false")], [h.path([h.D(GITHUB_PATH)])]),
       ])]),
       h.h1([], ["Piglatin Incorporated"]), h.p([], ["and animated"]),
+      h.p([h.Id("piglatin-intro")], [
+        "Pig Latin is a word game: shift the opening consonants to the end, then add “ay” — hello becomes ellohay. ",
+        h.a([h.Href("https://www.dictionary.com/articles/pig-latin")], ["About Pig Latin"]),
+        ". Here, words starting with a vowel simply gain “ay”: apple becomes appleay.",
+      ]),
       inputView(model.source, h), lazyContract(contractView, [model.source, trace, h]),
       h.div([h.Id("walkthrough"), h.Hidden(!trace.ok)], trace.ok && model.transformation ? [
         motionView(model.transformation, trace, model.position, h),
