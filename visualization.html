@@ -39,14 +39,10 @@
 </section>
 <div id="walkthrough" data-tab="diagram">
 <section class="panel" id="transformation-view">
-<div class="eyebrow">Word transformation</div>
-<h2>Sort, then assemble</h2>
-<p>Letters enter prefix and stem lanes. At the boundary, both lanes assemble the output.</p>
 <div class="motion-viewport" tabindex="0" role="region" aria-label="Word transformation; scroll horizontally for long inputs">
 <svg id="motion-stage" role="img" aria-label="Letters transforming at the selected event position"></svg>
 </div>
-<label for="motion-time">Drag the event bar left / right — your hand controls the motion</label>
-<input id="motion-time" type="range" min="0" max="1" step="0.001" value="0" aria-describedby="motion-event">
+<input id="motion-time" aria-label="Event position" type="range" min="0" max="1" step="0.001" value="0" aria-describedby="motion-event">
 <div id="motion-ticks"></div>
 <p id="motion-event"></p>
 <p class="motion-legend"><span>Orange: movable prefix</span><span>Green: stem</span><span>Purple: added suffix</span></p>

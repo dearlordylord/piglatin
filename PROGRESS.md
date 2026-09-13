@@ -280,8 +280,9 @@ Function share the trace-building module. A bundled `_worker.js` handles `/api`;
 the remaining interface is static. New API tests went red → green, all 75 ordinary
 tests passed, and the interface was checked in the local Cloudflare runtime.
 Project `piglatin` is connected to `dearlordylord/piglatin` on `master` and serves
-`https://piglatin-5f1.pages.dev`. The initial Git-based deployment succeeded; custom
-domain selection is separate from the working Pages deployment.
+`https://piglatin.curatorman.com/` (canonical website).
+`https://piglatin-5f1.pages.dev` is the Cloudflare Pages fallback. See
+[WEBSITE.md](WEBSITE.md) for local development, deployment, and animation architecture.
 
 The user selected transformation variant C (prefix/stem lanes, then assembly)
 by evaluating scrubbable motion. It now supplements the event trace on the website.
