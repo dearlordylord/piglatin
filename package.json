@@ -8,8 +8,8 @@
     "test:mbt": "npm run test:mbt:contract",
     "coverage": "node scripts/coverage.mjs",
     "crap": "node scripts/measure-crap.mjs",
-    "typecheck": "tsc --project tsconfig.json",
-    "test": "node --test *.test.ts",
+    "typecheck": "tsc --project tsconfig.json && npm run typecheck --workspace @piglatin/frontend",
+    "test": "node --test *.test.ts packages/core/src/*.test.ts packages/frontend/src/*.test.ts",
     "spec:check:composed": "quint typecheck translate-composed.qnt && quint test translate-composed_test.qnt --main translate_composed_test --max-samples 1",
     "spec:check:original": "quint typecheck translate-original.qnt && quint test translate-original_test.qnt --main translate_original_test --max-samples 1",
     "spec:simulate:composed": "quint run translate-composed.qnt --main translate_composed --invariant safety --witnesses sawCharacter sawEnd sawPunctuation sawQu --max-samples 200 --max-steps 50 --seed 42 --backend typescript --verbosity 1",
@@ -23,7 +23,7 @@
     "spec:check:contract": "quint typecheck translate-contract.qnt && quint typecheck translate-contract_harness.qnt && quint test translate-contract_test.qnt --backend typescript --max-samples 1 && quint test translate-contract_scenarios.qnt --backend typescript --max-samples 1",
     "spec:simulate:contract": "quint run translate-contract_harness.qnt --backend typescript --max-samples 100 --max-steps 15 --seed 42 --invariant safety --witnesses reachedNonText sawWord sawBoundary sawPhrase sawInvalidToken sawInvalidCharacter sawArbitrary sawAccepted sawRejected --verbosity 1",
     "test:mbt:contract": "node --test translate-contract.mbt.ts",
-    "visualize": "node visualization-server.ts",
+    "visualize": "node scripts/dev-site.mjs",
     "build:site": "node scripts/build-site.mjs",
     "preview:site": "npm run build:site && wrangler pages dev dist/site",
     "deploy:site": "npm run build:site && wrangler pages deploy dist/site --project-name piglatin --branch master"
@@ -40,5 +40,8 @@
   },
   "dependencies": {
     "effect": "4.0.0-rc.112"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

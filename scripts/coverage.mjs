@@ -1,5 +1,5 @@
 import { mkdirSync, readFileSync, writeFileSync, rmSync } from "node:fs";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createInstrumenter } from "istanbul-lib-instrument";
 
@@ -15,7 +15,12 @@ for (const source of config.sources) {
     parserPlugins: ["typescript"],
     compact: false,
   });
+  mkdirSync(dirname(`${directory}/${source}`), { recursive: true });
   writeFileSync(`${directory}/${source}`, instrumenter.instrumentSync(readFileSync(source, "utf8"), resolve(source)));
+}
+// Preserve compatibility entry points used by the historical test suites.
+for (const file of ["domain.ts", "translate-composed.ts"]) {
+  writeFileSync(`${directory}/${file}`, readFileSync(file));
 }
 // Keep all suites in the same test process so they contribute to one counter artifact.
 writeFileSync(`${directory}/domain.test.ts`, readFileSync("domain.test.ts"));

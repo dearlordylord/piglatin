@@ -1,0 +1,14 @@
+{
+  "name": "@piglatin/frontend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json"
+  },
+  "dependencies": {
+    "@piglatin/core": "*",
+    "effect": "4.0.0-rc.112",
+    "foldkit": "0.158.2"
+  }
+}

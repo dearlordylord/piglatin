@@ -2,23 +2,47 @@
 
 **Canonical website: [piglatin.curatorman.com](https://piglatin.curatorman.com/).**
 
-The site combines an input-to-output letter transformation, the actual reducer
-trace, an observed state diagram, and a state inspector. Dragging the event bar
-in either direction controls continuous motion; event buttons select exact
-reducer decisions. Motion supplements the events. Its clarity is judged by a
-person scrubbing the bar, not by screenshots or numerical checks alone.
+The site is a static TypeScript/Foldkit application. Translation, validation, and
+trace generation run in the browser through a shared core library. There is no
+translation API, backend, or Cloudflare Worker. After the page assets load,
+changing input and scrubbing work without network access.
+
+The transformation supplements the actual reducer trace, state diagram, and
+inspector. Motion clarity is judged by a person dragging the event bar in both
+directions; screenshots and numerical checks cannot establish that clarity.
+
+## Workspace structure
+
+This repository uses npm workspaces (`packages/*`) with one lockfile.
+
+- `packages/core` (`@piglatin/core`): input domain, translation reducer, and trace
+  generation. No browser, Foldkit, or server dependencies; usable from Node and
+  the frontend. Public exports include `translate`, `translateText`, `reduce`,
+  `decide`, and `visualize`, with trace schemas and types.
+- `packages/frontend` (`@piglatin/frontend`): Foldkit model/messages/update/view,
+  TypeScript animation calculations, HTML entry point, and CSS. It imports
+  `@piglatin/core` directly.
+- Root: original implementation, formal models, and historical test harnesses.
+  `domain.ts` and `translate-composed.ts` remain compatibility re-exports; the
+  implementation lives in the core package, not in duplicated copies.
+
+Foldkit is pinned to `0.158.2`, matching the existing Effect `4.0.0-rc.112`
+version. Upgrade them together according to Foldkit's exact peer dependency.
 
 ## Run locally
 
-With the project's Node environment and dependencies installed:
+With the project's Node environment:
 
 ```sh
+npm ci
 npm run visualize
 ```
 
-The server binds to `0.0.0.0:4324`. From outside Docker, use the container's
-reachable IP address and port 4324; `hostname -I` lists its addresses. Set `PORT`
-to use another port. The server serves the interface and handles `POST /api`.
+The development server builds/watches the TypeScript and CSS and serves static
+files on `0.0.0.0:4324`. From outside Docker, use its reachable IP address and
+port 4324; `hostname -I` lists container addresses. Set `PORT` to use another port.
+Refresh the browser after edits. Restart after editing the static HTML templates.
+This local asset server performs no translation or request handling for the app.
 
 ## Build and deploy
 
@@ -27,69 +51,67 @@ npm run build:site
 npm run preview:site
 ```
 
-The build writes static assets and a bundled Cloudflare Worker to `dist/site`.
-The preview command rebuilds and starts the local Cloudflare Pages runtime.
-`visualization-worker.ts` handles `/api`; all other requests use static assets.
-Both the Worker and local Node server call `visualization-model.ts` to validate
-input and produce the translation and reducer trace.
+The build bundles the frontend and shared core into `dist/site/assets`, with
+`index.html` and `404.html` at the root. There is no `_worker.js` or `_routes.json`.
+The preview command rebuilds and serves the files through the local Pages runtime.
 
 Cloudflare Pages project `piglatin` is connected to GitHub repository
 `dearlordylord/piglatin`, production branch `master`. Pushing to `master` triggers
-a deployment. Check the commit's **Cloudflare Pages** GitHub check, then verify
-the interface and API at **https://piglatin.curatorman.com/**.
+the existing deployment. Check the commit's **Cloudflare Pages** GitHub check,
+then verify the interface at **https://piglatin.curatorman.com/**.
 
-`https://piglatin-5f1.pages.dev` is the provider's fallback address, not the
-canonical website. An authenticated direct deployment is also available through
-`npm run deploy:site`; ordinary releases use the Git connection.
+`https://piglatin-5f1.pages.dev` is the provider's fallback address. An authenticated
+direct deployment is also available through `npm run deploy:site`; ordinary
+releases use the Git connection. Cloudflare only serves static assets.
 
-## Animation architecture
-
-The browser uses JavaScript and SVG with no animation library. The pipeline is:
+## Animation and application architecture
 
 ```text
-input → validated reducer trace → stable letter model
-                                      ↓
-fractional event position → shared layout → letter poses → SVG attributes
-             ↓
-     last completed event → trace, diagram, and state inspector
+input message → shared core → validated trace + stable letter model
+                                   ↓
+scrub message → fractional position → shared layout → keyed SVG view
+                       ↓
+               floor(position) → event trace, diagram, inspector
 ```
 
-`compileTransformation(source, trace)` in `transformation-view.js` runs when a
-new trace arrives. It assigns stable identities to input letters and generated
-suffix letters. The reducer's final prefix state determines the split; the actual
-translated output supplies each letter's final character and capitalization.
+`app.ts` defines the Schema-backed Foldkit model and pure update function.
+`ChangedInput` calls the core's `visualize` synchronously and compiles the letter
+model once. Invalid input produces a rejection and no animation. `Scrubbed`
+changes only the position, preserving the trace and letter model by reference.
+Event and diagram selections use the same seek operation.
 
-`transformationFrame(model, time)` is a pure function. An event position such as
-`3.5` means halfway between decisions 3 and 4. Smoothstep interpolation moves
-letters from the input row into prefix/stem lanes, then into the result at the
-word boundary. Added suffix letters fade and move into place at commitment;
-case restoration crossfades between the original and final glyphs.
+`transformation.ts` implements `compileTransformation` and the pure
+`transformationFrame(model, time)` function. Stable glyph identities and the
+prefix split come from the trace; final characters come from its actual output.
+Smoothstep interpolation moves letters into prefix/stem lanes and then into the
+result at the boundary. Suffix insertion and capitalization crossfade at commitment.
 
-Each frame computes shared layout first. Suffix insertion increases word width,
-shifts subsequent word positions, and recenters the assembly. Every letter's
-position derives from those same current coordinates, so destinations remain
-consistent while layout changes. Long inputs scroll horizontally.
+Each frame computes shared layout before letter poses. Suffix growth shifts
+subsequent words and recenters the assembly. Every letter uses those same current
+coordinates, keeping its destination consistent as word lengths change. Returning
+to the same event position produces the same positions and opacity values.
 
-`createTransformationView` owns the DOM adapter. It creates SVG glyph nodes once
-per trace and updates their positions and opacity during scrubbing. It wires the
-range input and event ticks to a seek callback in `visualization.js`. That callback
-uses `floor(time)` for the inspector and updates the fractional animation pose
-without rebuilding the trace for every movement within one event interval.
-Existing event buttons also synchronize the animation to integer positions.
+`view.ts` renders declarative Foldkit HTML/SVG. Keyed glyphs retain their DOM
+identity during scrubbing. Lazy trace, diagram, and inspector subtrees update
+only when the completed event changes. Long inputs scroll horizontally.
 
-There are no animation timers, CSS transitions, or independently running letter
-animations. Returning to the same position produces the same frame. DOM updates
-remain imperative at the rendering boundary; the motion and layout calculations
-are functional. This is not a reactive-library dependency.
+`entry.ts` starts the runtime and a scoped keyboard subscription. Foldkit owns DOM
+patching and render scheduling. The application has no animation clocks, timers,
+CSS transitions, or independently running letter animations. The only explicit
+UI command waits for a render commit and keeps the selected trace row visible
+inside its own scroll container; it does not control motion.
 
 Fractional poses are explanatory choreography, not intermediate reducer states.
-The complete trace supplies destinations in advance. The inspector always shows
-an actual completed decision.
+The complete trace supplies destinations in advance, and the inspector shows the
+last completed decision.
 
 ## Verification
 
-Run `npm run typecheck`, `npm test`, and `npm run build:site`. For interface changes,
-check the deployed site in a browser: scrub both directions, select event rows,
-use keyboard controls, try rejected input followed by accepted input, and inspect
-long phrases on narrow screens. Final letter order should match the API output.
-Human evaluation while dragging remains necessary for judging motion clarity.
+Run `npm run typecheck`, `npm test`, `npm run coverage`,
+`npm run test:mbt:contract`, and `npm run build:site` for structural changes.
+Core tests exercise direct calls rather than HTTP. Frontend tests cover message
+updates, rejection recovery, reversible frames, and final glyph ordering.
+
+In the browser, disable networking after loading the page and try new input,
+scrubbing, event/diagram selection, and keyboard controls. Check long phrases on
+narrow screens. Input changes and all interactions should issue zero requests.

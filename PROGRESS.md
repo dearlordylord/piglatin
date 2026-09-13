@@ -291,3 +291,9 @@ switcher are absent from master. The comparison is archived on
 `prototype/scrubbable-transformation`. Two code-review rounds ended with no
 remaining standards or spec findings; browser interaction checks, the site build,
 typechecking, and all 75 existing tests passed.
+
+The website now uses npm workspaces: `@piglatin/core` owns the shared TypeScript
+reducer/domain/trace, and `@piglatin/frontend` renders it with Foldkit. Translation
+runs synchronously in the browser. The API, Node application server, and Pages
+Worker were removed; deployment is static. Existing experimental imports remain
+compatible through root re-exports. See [WEBSITE.md](WEBSITE.md).

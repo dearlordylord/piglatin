@@ -1,8 +1,8 @@
 {
   "sources": [
-    "domain.ts",
+    "packages/core/src/domain.ts",
     "translate.ts",
-    "translate-composed.ts"
+    "packages/core/src/translate.ts"
   ],
   "coverage": {
     "path": "coverage/coverage-final.json",
