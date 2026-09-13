@@ -32,9 +32,16 @@ Importantly, what all the above shown was
 
 A negative side is that qnt spec remains, although more precise, still less readable than reducer .ts implementation
 
+## Experiment3:
+
+The realisation that a reducer/state machine event visualisation isn't the last step in the process of getting to the user! 
+
+LLM one-shot a nice visualisation that animates the word transformation using the events. 
+
 ## Conclusions, recommendations
 
 - qnt spec helps with precision, but not necessarily with spec readability
 - reducer version helped with business logic and requirements readability, being very explicit in its intent
 - it is clear that the reducer version is much less performant, and maybe shall be used as an oracle in property-based testing
 - qnt spec came better out of verbal specs, when LLMs dont look at the code; it's not clear if it's general behaviour or just happened locally
+- reducer version seemed to help with visualisation
