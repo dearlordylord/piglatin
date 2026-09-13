@@ -26,3 +26,6 @@ body[data-variant="A"] #walkthrough{grid-template-areas:"motion motion" "control
 #motion-ticks button{position:absolute;width:6px;min-width:6px;height:10px;border:0;border-radius:0;background:#829e8d;padding:0;margin:0;transform:translateX(-50%)}
 .motion-legend{display:flex;gap:18px;flex-wrap:wrap}.motion-legend span:first-child{color:#b24b0b}.motion-legend span:nth-child(2){color:#126f56}.motion-legend span:last-child{color:#7e40b1}
 @media(max-width:950px){body[data-variant="A"] #walkthrough{grid-template-areas:"motion" "controls" "diagram" "trace" "inspector"}}
+
+#piglatin-intro .example-stem{color:#126f56}
+#piglatin-intro .example-suffix{color:#7e40b1}

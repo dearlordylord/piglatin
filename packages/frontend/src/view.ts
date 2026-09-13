@@ -171,7 +171,9 @@ export const view = (model: Model, h: Builder): Document => {
       h.p([h.Id("piglatin-intro")], [
         "Pig Latin is a word game: shift the opening consonants to the end, then add “ay” — hello becomes ellohay. ",
         h.a([h.Href("https://www.dictionary.com/articles/pig-latin")], ["About Pig Latin"]),
-        ". Here, words starting with a vowel simply gain “ay”: apple becomes appleay.",
+        ". Here, words starting with a vowel simply gain “ay”: ",
+        h.span([h.Class("example-stem")], ["apple"]), " becomes ",
+        h.span([], [h.span([h.Class("example-stem")], ["apple"]), h.span([h.Class("example-suffix")], ["ay"])]), ".",
       ]),
       inputView(model.source, h), lazyContract(contractView, [model.source, trace, h]),
       h.div([h.Id("walkthrough"), h.Hidden(!trace.ok)], trace.ok && model.transformation ? [
