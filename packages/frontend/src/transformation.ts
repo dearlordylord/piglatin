@@ -50,7 +50,7 @@ export function compileTransformation(source: string, trace: Trace): Transformat
     }
     outputOffset += raw.length + (word ? suffix.length : 0);
   }
-  return { tokens, glyphs, sourceLength: source.length, width: Math.max(820, trace.output.length * pitch + 100) };
+  return { tokens, glyphs, sourceLength: source.length, width: Math.max(360, trace.output.length * pitch + 100) };
 }
 
 export function transformationFrame(model: TransformationModel, time: number) {
