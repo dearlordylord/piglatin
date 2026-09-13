@@ -282,3 +282,11 @@ tests passed, and the interface was checked in the local Cloudflare runtime.
 Project `piglatin` is connected to `dearlordylord/piglatin` on `master` and serves
 `https://piglatin-5f1.pages.dev`. The initial Git-based deployment succeeded; custom
 domain selection is separate from the working Pages deployment.
+
+The user selected transformation variant C (prefix/stem lanes, then assembly)
+by evaluating scrubbable motion. It now supplements the event trace on the website.
+Frames derive from event position and shared layout; prototype files and the
+switcher are absent from master. The comparison is archived on
+`prototype/scrubbable-transformation`. Two code-review rounds ended with no
+remaining standards or spec findings; browser interaction checks, the site build,
+typechecking, and all 75 existing tests passed.
