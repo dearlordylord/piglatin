@@ -10,4 +10,15 @@ module translate_original_test {
   run periodTest = { assert(translate(List(".")) == List(".","a","y")) }
   run emptyTest = { assert(translate(List()) == List()) }
   run separatorsTest = { assert(translate(List("TAB","!","QUOTE","LF")) == List("TAB","!","QUOTE","LF")) }
+  run admittedInputTest = { assert(all {
+    admittedInput(List()),
+    admittedInput(List("A","p","p","l","e")),
+    admittedInput(List("Q","U","I","T")),
+    admittedInput(List("1",",","2","!","3")),
+    not(admittedInput(List("B","a","N","a","N","a"))),
+    not(admittedInput(List("1","a"))),
+    not(admittedInput(List("q","u"))),
+    not(admittedInput(List("x","y","z"))),
+    not(admittedInput(List("."))),
+  }) }
 }

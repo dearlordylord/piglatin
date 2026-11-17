@@ -13,7 +13,7 @@
     "spec:check:composed": "quint typecheck translate-composed.qnt && quint test translate-composed_test.qnt --main translate_composed_test --max-samples 1",
     "spec:check:original": "quint typecheck translate-original.qnt && quint test translate-original_test.qnt --main translate_original_test --max-samples 1",
     "spec:simulate:composed": "quint run translate-composed.qnt --main translate_composed --invariant safety --witnesses sawCharacter sawEnd sawPunctuation sawQu --max-samples 200 --max-steps 50 --seed 42 --backend typescript --verbosity 1",
-    "spec:simulate:original": "quint run translate-original.qnt --main translate_original --invariant safety --witnesses sawQu sawDigitsAndPunctuation sawMixedCase --max-samples 200 --max-steps 50 --seed 42 --backend typescript --verbosity 1",
+    "spec:simulate:original": "quint run translate-original.qnt --main translate_original --invariant safety --witnesses sawQu sawDigitsAndPunctuation sawTitleCase --max-samples 200 --max-steps 50 --seed 42 --backend typescript --verbosity 1",
     "test:mbt:composed": "node --test translate-composed.mbt.ts",
     "test:mbt:original": "node --test translate-original.mbt.ts",
     "test:mbt:shared": "node --test translate-shared.mbt.ts",

@@ -1,6 +1,7 @@
 // Independent batch oracle for translate.ts. ASCII corpus, not a Unicode specification.
 // Append/Clear/Sample describe test-input construction, not implementation operations.
 module translate_original {
+  import translate_contract as contract from "./translate-contract"
   type View = { input: List[str], output: List[str] }
   var view: View
 
@@ -20,6 +21,22 @@ module translate_original {
     if (locations.size() == 0) c else upperLetters.nth(locations.fold(0, (a, b) => a + b))
   }
   pure def vowel(c: str): bool = Set("a","e","i","o","u").contains(lower(c))
+
+  // Reuse the public contract's admission policy; this oracle owns only translation.
+  pure def codeUnit(symbol: str): int = {
+    val letters = lowerLetters.indices().filter(i => lowerLetters.nth(i) == lower(symbol))
+    if (letters.size() > 0)
+      letters.fold(0, (a, b) => a + b) + (if (lower(symbol) == symbol) 97 else 65)
+    else {
+      val numerals = List("0","1","2","3","4","5","6","7","8","9")
+      val positions = numerals.indices().filter(i => numerals.nth(i) == symbol)
+      if (positions.size() > 0) positions.fold(0, (a, b) => a + b) + 48
+      else Map((" ",32),("TAB",9),("LF",10),(",",44),("!",33),("?",63),("QUOTE",34),
+        (".",46),("'",39),("-",45),(":",58),(";",59),("_",95)).get(symbol)
+    }
+  }
+  pure def admittedInput(input: List[str]): bool =
+    contract::problems(input.foldl(List(), (text, symbol) => text.append(codeUnit(symbol)))).size() == 0
 
   // The split is the least eligible vowel index, or the end if there is none.
   // A u immediately following q is part of the movable prefix.
@@ -62,20 +79,21 @@ module translate_original {
   action Append = {
     nondet character = alphabet.oneOf()
     val input = view.input.append(character)
-    all { view.input.length() < 24, view' = { input: input, output: translate(input) } }
+    all { view.input.length() < 24, admittedInput(input), view' = { input: input, output: translate(input) } }
   }
   action Clear = view' = { input: List(), output: List() }
   action Sample = {
     nondet input = samples.oneOf()
-    view' = { input: input, output: translate(input) }
+    all { admittedInput(input), view' = { input: input, output: translate(input) } }
   }
   action step = any { Append, Clear, Sample }
   val safety = all {
+    admittedInput(view.input),
     view.input.length() <= 24,
     view.output.length() >= view.input.length(),
     view.input.select(c => delimiters.contains(c)) == view.output.select(c => delimiters.contains(c)),
   }
   val sawQu = view.input == List("s","q","u","a","r","e")
   val sawDigitsAndPunctuation = view.input == List("1",",","2","!","3")
-  val sawMixedCase = view.input == List("B","a","N","a","N","a")
+  val sawTitleCase = view.input == List("A","p","p","l","e")
 }
